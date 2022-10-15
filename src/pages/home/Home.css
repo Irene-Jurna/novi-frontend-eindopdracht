@@ -1,0 +1,15 @@
+.recipe-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 50px;
+}
+
+.recipe-card-item {
+    width: 350px;
+}
+
+img {
+    width: 250px;
+    height: auto;
+}
