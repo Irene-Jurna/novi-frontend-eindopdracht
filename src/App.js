@@ -6,7 +6,7 @@ import RecipeSearcher from './pages/recipe search function/RecipeSearcher'
 function App() {
     return (
         <>
-            <nav>
+            <nav className="navbar-container">
                 <li><NavLink to="/">Home</NavLink></li>
                 <li><NavLink to="/recepten-zoeker">Recepten zoeker</NavLink></li>
             </nav>

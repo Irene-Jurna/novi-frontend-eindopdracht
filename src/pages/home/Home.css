@@ -1,15 +1,25 @@
 .recipe-card-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    padding-top: 50px;
+    justify-content: center;
 }
 
 .recipe-card-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 350px;
+    padding: 20px;
+    text-align: center;
+}
+
+.colored-background-container {
+    display: flex;
+    background-color: #A6C48A;
 }
 
 img {
     width: 250px;
     height: auto;
 }
+

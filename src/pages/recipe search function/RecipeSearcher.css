@@ -1,0 +1,48 @@
+.search-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-bar {
+    padding: 7px 30px;
+    margin: 20px;
+    width: 250px;
+    border-radius: 3px;
+    background-color: #F6E7CB;
+    border-color: #F6E7CB;
+    border-style: outset;
+    cursor: pointer;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    text-align: center;
+}
+
+.checkbox {
+    margin: 5px;
+    text-align: center;
+}
+
+.recipe-container {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.recipe-item {
+    border: solid 2px #F6E7CB;
+    border-bottom-width: 50%;
+    list-style: none;
+    padding: 15px;
+    background-color: rgba(221, 151, 135, 0.3);
+    margin: 5px;
+    border-radius: 3px;
+}
+
+.text-recipe-info {
+    font-size: 16px;
+}
+
+.text-minutes {
+    font-size: 12px;
+    text-align: end;
+}
