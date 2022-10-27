@@ -9,14 +9,14 @@ function App() {
         <>
             <nav className="navbar-container">
                 <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/recepten-zoeker">Recepten zoeker</NavLink></li>
+                <li><NavLink to="/recipe-searchbar">Find recipes</NavLink></li>
             </nav>
             <section className="inner-container">
                 <Switch>
                     <Route exact path="/">
                         <Home/>
                     </Route>
-                    <Route path="/recipe-searchbar">
+                    <Route exact path="/recipe-searchbar">
                         <RecipeSearcher/>
                     </Route>
                     <Route exact path="/recipe/:id">

@@ -3,6 +3,7 @@ import Button from "../../components/Button";
 import {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
+import radish from '../../assets/radish.png'
 
 function RecipeSearcher() {
     const [searchValue, setSearchValue] = useState('');
@@ -74,12 +75,10 @@ function RecipeSearcher() {
                 {recipes.map((recipe) => {
                     return (
                         <article className="recipe-list" key={recipe.recipe.label}>
-                            <ul onClick={() => history.push(`/recipe/${recipe.recipe.label}`)}>
+                            <ul className="recipe-ul" onClick={() => history.push(`/recipe/${recipe.recipe.label}`)}>
                                 <li className="recipe-item">{recipe.recipe.label}
                                     <p className="text-recipe-info">{recipe.recipe.dishType} - {recipe.recipe.cuisineType}</p>
-                                    <div className="additional-info">
                                     <p className="text-minutes">Ready in {recipe.recipe.totalTime} minutes</p>
-                                    </div>
                                 </li>
                             </ul>
                         </article>
@@ -87,6 +86,7 @@ function RecipeSearcher() {
                     )
                 })}
             </section>
+            <img className="radish-img" src={radish} alt="Radish"/>
             </>
             );
             }

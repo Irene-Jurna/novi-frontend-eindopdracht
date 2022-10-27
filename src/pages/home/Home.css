@@ -15,11 +15,46 @@
 
 .colored-background-container {
     display: flex;
-    background-color: #A6C48A;
+    flex-direction: row;
+    background-color: rgba(166, 196, 138, 0.5);
+    padding: 8vw 100%;
+    margin: 2vw 0;
 }
 
-img {
+.img-home {
     width: 250px;
     height: auto;
 }
 
+@media screen and (min-width: 768px) {
+    .recipe-card-item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .img-home {
+        width: 35vw;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .img-home {
+        width: 417px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .recipe-card-item {
+        margin: 0 2vw;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .recipe-card-item {
+        margin: 0 3vw;
+    }
+}

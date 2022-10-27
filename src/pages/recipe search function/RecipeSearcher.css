@@ -17,15 +17,18 @@
     text-align: center;
 }
 
-.checkbox {
-    margin: 5px;
-    text-align: center;
-}
+/*.checkbox {*/
+/*    margin: 5px;*/
+/*    text-align: center;*/
+/*}*/
 
 .recipe-container {
     display: flex;
     flex-direction: column;
-    text-align: start;
+}
+
+.recipe-list {
+    cursor: pointer;
 }
 
 .recipe-item {
@@ -44,5 +47,43 @@
 
 .text-minutes {
     font-size: 12px;
-    text-align: end;
+}
+
+.radish-img {
+    position: relative;
+    top: 1vw;
+    width: 33%;
+    height: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .recipe-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .recipe-item {
+        width: 300px;
+        height: 150px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .recipe-container {
+        margin: 0 5vw;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .recipe-container {
+        margin: 0 10vw;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .recipe-container {
+        margin: 0 17vw;
+    }
 }

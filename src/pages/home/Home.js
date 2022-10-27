@@ -40,7 +40,7 @@ function Home() {
     return (
         <>
             <h1>VanVeg</h1>
-            <img src={broccoli} alt="broccoli"/>
+            <img className="img-home" src={broccoli} alt="broccoli"/>
             <p>VanVeg is the vegan Hot spot online. Our mouth-watering, traditional curries from all over the world,
                 healthy snacks and heavenly sweets will have you.</p>
             <Button
