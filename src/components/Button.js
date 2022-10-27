@@ -8,7 +8,7 @@ function Button({type, buttonText, buttonName}) {
         <button
             type={type}
             className="button"
-            onClick={() => history.push('/recepten-zoeker')}
+            onClick={() => history.push('/recipe-searchbar')}
         >{buttonText}
         </button>
     );

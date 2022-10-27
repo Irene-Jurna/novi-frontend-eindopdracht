@@ -2,6 +2,7 @@ import './App.css';
 import {NavLink, Route, Switch} from "react-router-dom";
 import Home from './pages/home/Home'
 import RecipeSearcher from './pages/recipe search function/RecipeSearcher'
+import RecipeInformation from "./pages/recipe page/RecipeInformation";
 
 function App() {
     return (
@@ -11,14 +12,17 @@ function App() {
                 <li><NavLink to="/recepten-zoeker">Recepten zoeker</NavLink></li>
             </nav>
             <section className="inner-container">
-            <Switch>
-                <Route exact path="/">
-                    <Home/>
-                </Route>
-                <Route path="/recepten-zoeker">
-                    <RecipeSearcher/>
-                </Route>
-            </Switch>
+                <Switch>
+                    <Route exact path="/">
+                        <Home/>
+                    </Route>
+                    <Route path="/recipe-searchbar">
+                        <RecipeSearcher/>
+                    </Route>
+                    <Route exact path="/recipe/:id">
+                        <RecipeInformation/>
+                    </Route>
+                </Switch>
             </section>
         </>
     );

@@ -1,6 +1,7 @@
 import './RecipeSearcher.css';
 import Button from "../../components/Button";
 import {useEffect, useState} from "react";
+import {useHistory} from "react-router-dom";
 import axios from "axios";
 
 function RecipeSearcher() {
@@ -8,6 +9,7 @@ function RecipeSearcher() {
     // const [vegCheck, toggleVegCheck] = useState(false);
     const [recipes, setRecipes] = useState([]);
     const [query, setQuery] = useState('');
+    const history = useHistory();
 
     const edamameId = '4e1e2f8f';
     const edamameKey = '324092c9d55a77b05f596a354fa9d42f';
@@ -72,7 +74,7 @@ function RecipeSearcher() {
                 {recipes.map((recipe) => {
                     return (
                         <article className="recipe-list" key={recipe.recipe.label}>
-                            <ul>
+                            <ul onClick={() => history.push(`/recipe/${recipe.recipe.label}`)}>
                                 <li className="recipe-item">{recipe.recipe.label}
                                     <p className="text-recipe-info">{recipe.recipe.dishType} - {recipe.recipe.cuisineType}</p>
                                     <div className="additional-info">
