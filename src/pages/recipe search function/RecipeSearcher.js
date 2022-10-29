@@ -39,9 +39,10 @@ function RecipeSearcher() {
 
     return (
         <>
+            <section className="row-container">
             <h2>Find your recipe</h2>
             <p>Search your favorites</p>
-
+        </section>
             <form
                 className="search-container"
                 type="submit"

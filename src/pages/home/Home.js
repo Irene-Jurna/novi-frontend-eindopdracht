@@ -65,7 +65,7 @@ function Home() {
 
     return (
         <>
-            <section className="row-container yellow-background">
+            <section className="row-container-top yellow-background">
                 <div className="home">
                     <h1>VanVeg</h1>
                     <p className="intro-text">VanVeg is the vegan Hot spot online. Our mouth-watering, traditional
@@ -81,15 +81,21 @@ function Home() {
             {/*<section>*/}
             {/*    <h2 className="h2-colored">Top recipe's today</h2>*/}
             {/*</section>*/}
+            <section>
+                <h2 className="row-container">Today's top recipes</h2>
+            </section>
             <section className="recipe-card-container row-container">
-
                 {recipes.slice(0, 9).map((recipe, index) => {
                     return (
                         <article className="recipe-card-item" key={recipe.recipe.label}>
-                            <h3>{recipe.recipe.label}</h3>
+                            <div className="recipe-card-image">
                             <img className="fruit-img" src={require(`../../assets/${veggieImages[index].image}.png`)}
                                  alt={veggieImages[index].title} key={veggieImages[index].title}/>
-                            <p>{recipe.recipe.dishType} - {recipe.recipe.cuisineType}</p>
+                            </div>
+                            <div className="recipe-card-text">
+                            <h3>{recipe.recipe.label}</h3>
+                            <p className="text-specifications">{recipe.recipe.dishType} - {recipe.recipe.cuisineType}</p>
+                            </div>
                         </article>
                     )
                 })}

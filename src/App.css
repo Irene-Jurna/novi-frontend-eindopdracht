@@ -12,11 +12,8 @@
 }
 
 .logo-img {
-    height: 150px;
+    height: 50px;
     width: auto;
-    position: absolute;
-    top: -2vw;
-    left: 2vw;
 }
 
 /* ------------------------------- 2. Typography ----------------------------------- */
@@ -33,6 +30,10 @@ h1 {
     font-size: 48px;
 }
 
+h2 {
+    font-size: 32px;
+}
+
 p {
     font-family: 'Encode Sans Condensed', sans-serif;
     font-size: 18px;
@@ -47,6 +48,7 @@ p {
 /*Russion Green:#678D58;*/
 /*Olivine: #A6C48A;*/
 /*Champagne: #F6E7CB;*/
+/*Green yellow Crayola: #FFE8B6;*/
 /*Dark Salmon: #DD9787;*/
 /*Jet (black for text): #292929;*/
 /*White: #FFFFFF; */
@@ -67,7 +69,16 @@ p {
     width: 100%;
     height: 100%;
     display: flex;
-    padding: 120px 100px 0;
+    justify-content: center;
+    padding: 60px 100px 0;
+    flex-wrap: wrap;
+}
+
+.row-container-top {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 180px 100px 140px 100px;
     flex-wrap: wrap;
 }
 
@@ -76,7 +87,7 @@ p {
 }
 
 .yellow-background {
-    background-color: rgba(255, 232, 182, 0.5);
+    background-color: rgba(246, 245, 174, 0.5);
 }
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
@@ -84,13 +95,34 @@ p {
 /* --------------- 4.1 Navbar ------------------------- */
 .navbar-container {
     display: flex;
-    justify-content: space-around;
     width: 100%;
-    list-style: none;
+    position: fixed;
+    padding: 20px 50px;
+    justify-content: space-around;
+}
+
+.navbar-onscroll {
+    display: flex;
+    width: 100%;
     background-color: white;
     box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
-    padding: 30px;
     position: fixed;
+    padding: 20px 50px;
+    justify-content: space-around;
+    padding: 20px 100px;
+    flex: 1 1 auto;
+}
+
+.navbar-links {
+    list-style: none;
+}
+
+.navbar-links > li {
+    padding: 0 10px;
+}
+
+.navbar-logo {
+    display: flex;
 }
 
 .navbar-active-link {
@@ -101,6 +133,23 @@ p {
 /* --------------- 4.2 Footer ------------------- */
 
 /* ------------------------------- 5. Media Queries -------------------------------- */
+
+@media screen and (min-width: 576px) {
+    .navbar-container {
+        padding: 20px 100px;
+        flex: 1 1 auto;
+    }
+
+    .navbar-links {
+        display: flex;
+        flex-grow: 1;
+        flew-shrink: 1;
+        padding: 0;
+        justify-content: flex-end;
+        box-sizing: border-box;
+        align-items: center;
+    }
+}
 
 @media screen and (min-width: 768px) {
     .row-container {
