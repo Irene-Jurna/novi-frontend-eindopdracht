@@ -31,6 +31,10 @@
     cursor: pointer;
 }
 
+.recipe-item:hover {
+    background-color: rgba(121, 251, 35, 0.3);
+}
+
 .recipe-item {
     border: solid 2px #F6E7CB;
     border-bottom-width: 50%;
@@ -51,8 +55,7 @@
 
 .radish-img {
     position: relative;
-    top: 1vw;
-    width: 33%;
+    width: 200px;
     height: auto;
 }
 

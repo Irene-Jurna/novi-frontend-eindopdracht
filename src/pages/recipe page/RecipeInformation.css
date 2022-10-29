@@ -1,0 +1,21 @@
+.information-container {
+    height: 100%;
+    width: 100%;
+}
+
+.information-list {
+    position: relative;
+}
+
+.radish-img {
+    position: absolute;
+    width: 45%;
+    height: auto;
+    top: 10vw;
+    right: 5vw;
+    z-index: -1;
+}
+
+.first ~ li {
+    color: #A6C48A;
+}

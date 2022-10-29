@@ -1,14 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Signika:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Signika:wght@500&display=swap');
-
-/*Kleurenpalet:*/
-/*Medium Aquamarine: #74D3AE;*/
-/*Russion Green:#678D58;*/
-/*Olivine: #A6C48A;*/
-/*Champagne: #F6E7CB;*/
-/*Dark Salmon: #DD9787;*/
-/*Jet (black for text): #292929;*/
-/*White: #FFFFFF; */
+/* ------------------------------- 1. Global Styles -------------------------------- */
 
 * {
     margin: 0;
@@ -19,45 +9,101 @@
 .outer-container {
     width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
 }
 
-.inner-container {
-    flex-basis: 1200px;
-    flex-grow: 0;
-    flex-shrink: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
+.logo-img {
+    height: 150px;
+    width: auto;
+    position: absolute;
+    top: -2vw;
+    left: 2vw;
 }
 
-.navbar-container {
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    background-color: #F6E7CB;
-    padding: 30px;
+/* ------------------------------- 2. Typography ----------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Signika:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Signika:wght@500&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Signika', sans-serif;
+    padding: 5px 0;
 }
 
 h1 {
-    font-family: 'Signika', sans-serif;
-    padding: 5px;
-}
-
-h2 {
-    font-family: 'Signika', sans-serif;
-    padding: 5px;
-}
-
-h5 {
-    font-family: 'Signika', sans-serif;
-    padding: 5px;
+    font-size: 48px;
 }
 
 p {
     font-family: 'Encode Sans Condensed', sans-serif;
     font-size: 18px;
     padding-bottom: 20px;
+}
+
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+/* --------------- 3.1 Color palette  ----------------------- */
+
+/*Medium Aquamarine: #74D3AE;*/
+/*Russion Green:#678D58;*/
+/*Olivine: #A6C48A;*/
+/*Champagne: #F6E7CB;*/
+/*Dark Salmon: #DD9787;*/
+/*Jet (black for text): #292929;*/
+/*White: #FFFFFF; */
+
+/* --------------- 3.2 Reusables --------------------------- */
+
+/*.inner-container {*/
+/*    flex-basis: 100%;*/
+/*    flex-grow: 0;*/
+/*    flex-shrink: 1;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    !*padding: 40px;*!*/
+/*}*/
+
+.row-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 120px 100px 0;
+    flex-wrap: wrap;
+}
+
+.pink-background {
+    background-color: rgba(221, 151, 135, 0.3);
+}
+
+.yellow-background {
+    background-color: rgba(255, 232, 182, 0.5);
+}
+
+/* ------------------------------- 4. Areas ---------------------------------------- */
+
+/* --------------- 4.1 Navbar ------------------------- */
+.navbar-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    list-style: none;
+    background-color: white;
+    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
+    padding: 30px;
+    position: fixed;
+}
+
+.navbar-active-link {
+    text-decoration: none;
+    color: black;
+}
+
+/* --------------- 4.2 Footer ------------------- */
+
+/* ------------------------------- 5. Media Queries -------------------------------- */
+
+@media screen and (min-width: 768px) {
+    .row-container {
+        flex-wrap: nowrap;
+    }
 }

@@ -3,15 +3,21 @@ import {NavLink, Route, Switch} from "react-router-dom";
 import Home from './pages/home/Home'
 import RecipeSearcher from './pages/recipe search function/RecipeSearcher'
 import RecipeInformation from "./pages/recipe page/RecipeInformation";
+import cauliflowerGray from './assets/cauliflowerGray.png'
 
 function App() {
     return (
         <>
             <nav className="navbar-container">
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/recipe-searchbar">Find recipes</NavLink></li>
+                <article className="logo">
+                    <img src={cauliflowerGray} alt="Cauliflower logo" className="logo-img"/>
+                </article>
+                <section className="navbar-links">
+                <li><NavLink to="/" activeClassName="navbar-active-link">Home</NavLink></li>
+                <li><NavLink to="/recipe-searchbar" activeClassName="navbar-active-link">Find recipes</NavLink></li>
+                </section>
             </nav>
-            <section className="inner-container">
+            <section>
                 <Switch>
                     <Route exact path="/">
                         <Home/>

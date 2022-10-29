@@ -2,6 +2,7 @@ import './RecipeInformation.css';
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
+import radishNoBg from '../../assets/radishNoBg.png'
 
 function RecipeInformation() {
     const {id} = useParams();
@@ -25,9 +26,17 @@ function RecipeInformation() {
 
     return (
         <div>
-            <h1>{recipeInformations.label}</h1>
-            <p>Ingredients:</p>
-            <p>{recipeInformations.ingredientLines}</p>
+            <section className="information-container">
+                <h1>{recipeInformations.label}</h1>
+                <p>Ingredients:</p>
+                <p>{recipeInformations.ingredientLines}</p>
+                <ul className="information-list">
+                    <li className="first">{recipeInformations.cuisineType}</li>
+                    <li>{recipeInformations.dishType}</li>
+                    <li>{recipeInformations.healthLabels}</li>
+                </ul>
+                <img className="radish-img" src={radishNoBg} alt="Radish"/>
+            </section>
         </div>
     );
 }

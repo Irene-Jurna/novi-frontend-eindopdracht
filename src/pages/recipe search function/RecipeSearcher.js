@@ -86,9 +86,9 @@ function RecipeSearcher() {
                     )
                 })}
             </section>
-            <img className="radish-img" src={radish} alt="Radish"/>
-            </>
-            );
-            }
+            {!recipes.length && (<img className="radish-img" src={radish} alt="Radish"/>)}
+        </>
+    );
+}
 
-            export default RecipeSearcher;
+export default RecipeSearcher;
