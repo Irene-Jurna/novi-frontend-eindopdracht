@@ -39,10 +39,9 @@ function RecipeSearcher() {
 
     return (
         <>
-            <section className="row-container">
+            <section className="row-container-top home yellow-background">
             <h2>Find your recipe</h2>
             <p>Search your favorites</p>
-        </section>
             <form
                 className="search-container"
                 type="submit"
@@ -72,6 +71,7 @@ function RecipeSearcher() {
                     {/*</label>*/}
                 </label>
             </form>
+            </section>
             <section className="recipe-container">
                 {recipes.map((recipe) => {
                     return (
@@ -87,7 +87,7 @@ function RecipeSearcher() {
                     )
                 })}
             </section>
-            {!recipes.length && (<img className="radish-img" src={radish} alt="Radish"/>)}
+            {/*{!recipes.length && (<img className="radish-img" src={radish} alt="Radish"/>)}*/}
         </>
     );
 }

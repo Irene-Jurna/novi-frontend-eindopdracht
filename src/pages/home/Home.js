@@ -15,36 +15,37 @@ function Home() {
             image: 'broccoli',
         },
         {
-            title: 'Parsnip',
-            image: 'parsnip',
-        },
-        {
             title: 'Apples',
             image: 'apples',
-        },
-        {
-            title: 'Asparagus',
-            image: 'asparagus',
-        },
-        {
-            title: 'Cauliflower',
-            image: 'cauliflower',
-        },
-        {
-            title: 'Celery',
-            image: 'celery',
         },
         {
             title: 'Chicory',
             image: 'chicory',
         },
         {
-            title: 'Pear',
-            image: 'pear',
+            title: 'Asparagus',
+            image: 'asparagus',
         },
         {
             title: 'Red Cabbage',
             image: 'redcabbage',
+        },
+        {
+            title: 'Parsnip',
+            image: 'parsnip',
+        },
+        {
+            title: 'Radish',
+            image: 'radish',
+        },
+
+        {
+            title: 'Leek',
+            image: 'leek',
+        },
+        {
+            title: 'Pear',
+            image: 'pear',
         },
     ]
 
@@ -65,7 +66,7 @@ function Home() {
 
     return (
         <>
-            <section className="row-container-top yellow-background">
+            <section className=" home-container row-container-top yellow-background">
                 <div className="home">
                     <h1>VanVeg</h1>
                     <p className="intro-text">VanVeg is the vegan Hot spot online. Our mouth-watering, traditional

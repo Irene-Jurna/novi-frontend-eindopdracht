@@ -75,10 +75,12 @@ p {
 }
 
 .row-container-top {
-    width: 100%;
-    height: 100%;
+    /*width: 100%;*/
+    /*height: 100%;*/
     display: flex;
-    padding: 180px 100px 140px 100px;
+    flex-direction: row;
+    align-items: center;
+    padding: 180px 100px 180px 100px;
     flex-wrap: wrap;
 }
 
@@ -88,6 +90,18 @@ p {
 
 .yellow-background {
     background-color: rgba(246, 245, 174, 0.5);
+}
+
+champagne-background {
+    background-color: rgba(246, 231, 203, 0.5);
+}
+
+.green-background {
+    background-color: rgba(166, 196, 138, 0.5);
+}
+
+.blue-background {
+    background-color: rgba(116, 211, 174, 0.3);
 }
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
@@ -128,6 +142,7 @@ p {
 .navbar-active-link {
     text-decoration: none;
     color: black;
+    font-family: 'Encode Sans Condensed', sans-serif;
 }
 
 /* --------------- 4.2 Footer ------------------- */
