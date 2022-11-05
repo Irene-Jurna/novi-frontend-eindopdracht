@@ -1,11 +1,13 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import logo from "../assets/logo.png";
 import {NavLink, useHistory} from "react-router-dom";
 import "./NavBar.css"
+import {AuthContext} from "../context/AuthContext";
 
 function NavBar() {
-    const [navbar, setNavbar] = useState(false);
     const history = useHistory();
+    const [navbar, setNavbar] = useState(false);
+    const {isAuth, logout} = useContext(AuthContext);
 
     function changeNavbar() {
         if (window.scrollY >= 50) {
@@ -14,6 +16,7 @@ function NavBar() {
             setNavbar(true)
         }
     }
+
     window.addEventListener("scroll", changeNavbar);
 
     return (
@@ -32,18 +35,29 @@ function NavBar() {
                 >Find recipes</NavLink></li>
             </ul>
             <div>
-                <button
-                    type="button"
-                    className="navbar-button"
-                    onClick={() => history.push('/login')}
-                >Login
-                </button>
-                <button
-                    type="button"
-                    className="navbar-button"
-                    onClick={() => history.push('/register')}
-                >Register
-                </button>
+                {isAuth ?
+                    <button
+                        type="button"
+                        className="navbar-button"
+                        onClick={logout}
+                    >Logout
+                    </button>
+                    :
+                    <div>
+                    <button
+                        type="button"
+                        className="navbar-button"
+                        onClick={() => history.push('/login')}
+                    >Login
+                    </button>
+                    <button
+                        type="button"
+                        className="navbar-button"
+                        onClick={() => history.push('/register')}
+                    >Register
+                    </button>
+                    </div>
+                }
             </div>
         </nav>
     )
