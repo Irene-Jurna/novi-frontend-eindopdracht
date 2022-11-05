@@ -106,45 +106,6 @@ champagne-background {
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
 
-/* --------------- 4.1 Navbar ------------------------- */
-.navbar-container {
-    display: flex;
-    width: 100%;
-    position: fixed;
-    padding: 20px 50px;
-    justify-content: space-around;
-}
-
-.navbar-onscroll {
-    display: flex;
-    width: 100%;
-    background-color: white;
-    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
-    position: fixed;
-    padding: 20px 50px;
-    justify-content: space-around;
-    padding: 20px 100px;
-    flex: 1 1 auto;
-}
-
-.navbar-links {
-    list-style: none;
-}
-
-.navbar-links > li {
-    padding: 0 10px;
-}
-
-.navbar-logo {
-    display: flex;
-}
-
-.navbar-active-link {
-    text-decoration: none;
-    color: black;
-    font-family: 'Encode Sans Condensed', sans-serif;
-}
-
 /* --------------- 4.2 Footer ------------------- */
 
 /* ------------------------------- 5. Media Queries -------------------------------- */

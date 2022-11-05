@@ -5,38 +5,15 @@ import RecipeSearcher from './pages/recipe search function/RecipeSearcher'
 import RecipeInformation from "./pages/recipe page/RecipeInformation";
 import logo from './assets/logo.png'
 import {useState} from "react";
+import Register from "./pages/register/Register";
+import Login from "./pages/login/Login";
+import Profile from "./pages/profile/Profile"
+import NavBar from "./components/NavBar";
 
 function App() {
-    const [navbar, setNavbar] = useState(false);
-
-    function changeNavbar() {
-        if (window.scrollY >= 50) {
-            setNavbar(false)
-        } else {
-            setNavbar(true)
-        }
-    }
-
-    window.addEventListener("scroll", changeNavbar);
-
-    return (
-        <>
-            <nav className={navbar ? "navbar-container" : "navbar-onscroll"}>
-                <article className="navbar-logo">
-                    <img src={logo} alt="VanVeg logo" className="logo-img"/>
-                </article>
-                <ul className="navbar-links">
-                    <li><NavLink
-                        to="/"
-                        activeClassName="navbar-active-link"
-                    >Home</NavLink></li>
-                    <li><NavLink
-                        to="/recipe-searchbar"
-                        activeClassName="navbar-active-link"
-                    >Find recipes</NavLink></li>
-                </ul>
-            </nav>
+        return (
             <section>
+                <NavBar />
                 <Switch>
                     <Route exact path="/">
                         <Home/>
@@ -47,9 +24,17 @@ function App() {
                     <Route exact path="/recipe/:id">
                         <RecipeInformation/>
                     </Route>
+                    <Route exact path="/register">
+                        <Register />
+                    </Route>
+                    <Route exact path="/login">
+                        <Login />
+                    </Route>
+                    <Route path="/profile">
+                        <Profile />
+                    </Route>
                 </Switch>
             </section>
-        </>
     );
 }
 

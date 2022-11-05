@@ -1,7 +1,6 @@
 import './Home.css';
 import {useEffect, useState} from "react";
 import axios from "axios";
-import chicoryNoBg from '../../assets/chicoryNoBg.png';
 import Button from "../../components/Button";
 
 function Home() {
