@@ -1,3 +1,7 @@
+/* ------------------------------- 4. Areas ---------------------------------------- */
+
+/* --------------- 4.1 All (nog uitsplitsen) ------------------- */
+
 .information-container {
     height: 100%;
     width: 100%;
@@ -5,6 +9,7 @@
 
 .information-list {
     position: relative;
+    list-style: none;
 }
 
 /*.radish-img {*/
@@ -19,3 +24,30 @@
 .first ~ li {
     color: #A6C48A;
 }
+
+.health-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.health-list {
+    list-style: none;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+/* ------------------------------- 5. Media Queries -------------------------------- */
+
+@media screen and (max-width: 576px) {
+    .recipe-title {
+        font-size: 32px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .info-border {
+        border: solid #A6C48A;
+        padding: 75px 125px;
+    }
+}
+

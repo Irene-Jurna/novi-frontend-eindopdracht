@@ -53,37 +53,6 @@ p {
 /*Jet (black for text): #292929;*/
 /*White: #FFFFFF; */
 
-/* --------------- 3.2 Reusables --------------------------- */
-
-/*.inner-container {*/
-/*    flex-basis: 100%;*/
-/*    flex-grow: 0;*/
-/*    flex-shrink: 1;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*    !*padding: 40px;*!*/
-/*}*/
-
-.row-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 60px 100px 0;
-    flex-wrap: wrap;
-}
-
-.row-container-top {
-    /*width: 100%;*/
-    /*height: 100%;*/
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 180px 100px 180px 100px;
-    flex-wrap: wrap;
-}
-
 .pink-background {
     background-color: rgba(221, 151, 135, 0.3);
 }
@@ -104,11 +73,56 @@ champagne-background {
     background-color: rgba(116, 211, 174, 0.3);
 }
 
+/* --------------- 3.2 Reusables --------------------------- */
+
+/*.inner-container {*/
+/*    flex-basis: 100%;*/
+/*    flex-grow: 0;*/
+/*    flex-shrink: 1;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    !*padding: 40px;*!*/
+/*}*/
+
+.row-container-top {
+    /*width: 100%;*/
+    /*height: 100%;*/
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 180px 100px;
+    flex-wrap: wrap;
+}
+
+.row-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 60px 100px 0;
+    flex-wrap: wrap;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
 /* ------------------------------- 4. Areas ---------------------------------------- */
 
 /* --------------- 4.2 Footer ------------------- */
 
 /* ------------------------------- 5. Media Queries -------------------------------- */
+
+@media screen and (max-width: 768px) {
+    .row-container-top {
+        padding: 180px 11vw;
+    }
+}
 
 @media screen and (min-width: 576px) {
     .navbar-container {
@@ -130,5 +144,9 @@ champagne-background {
 @media screen and (min-width: 768px) {
     .row-container {
         flex-wrap: nowrap;
+    }
+
+    .home {
+        padding: 180px 20vw;
     }
 }

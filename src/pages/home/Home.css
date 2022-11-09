@@ -10,12 +10,6 @@
     justify-content: center;
 }
 
-.home {
-    display: flex;
-    flex-direction: column;
-
-}
-
 .intro-text {
     max-width: 550px;
     padding: 0 5px;

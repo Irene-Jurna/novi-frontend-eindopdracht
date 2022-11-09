@@ -2,7 +2,6 @@ import './RecipeInformation.css';
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
-import radishNoBg from '../../assets/radishNoBg.png'
 
 function RecipeInformation() {
     const {id} = useParams();
@@ -26,16 +25,30 @@ function RecipeInformation() {
 
     return (
         <div>
-            <section className="information-container">
-                <h1>{recipeInformations.label}</h1>
-                <p>Ingredients:</p>
-                <p>{recipeInformations.ingredientLines}</p>
-                <ul className="information-list">
-                    <li className="first">{recipeInformations.cuisineType}</li>
-                    <li>{recipeInformations.dishType}</li>
-                    <li>{recipeInformations.healthLabels}</li>
-                </ul>
-                <img className="radish-img" src={radishNoBg} alt="Radish"/>
+            <section className="row-container home yellow-background">
+                <div className="info-border">
+                    <h1 className="recipe-title">{recipeInformations.label}</h1>
+                    <p>{recipeInformations.dishType} | {recipeInformations.cuisineType}</p>
+                    <p>Ingredients:</p>
+
+                    {recipeInformations && recipeInformations.ingredientLines.map((recipeInformation) => {
+                        return (
+                            <ul>
+                                <li key={recipeInformation}>{recipeInformation}</li>
+                            </ul>
+                        );
+                    })}
+                </div>
+            </section>
+            <section className="row-container health-container">
+
+                {recipeInformations && recipeInformations.healthLabels.map((healthInformation) => {
+                    return (
+                        <ul className="health-list recipe-item">
+                            <li key={healthInformation}>{healthInformation}</li>
+                        </ul>
+                    );
+                })}
             </section>
         </div>
     );

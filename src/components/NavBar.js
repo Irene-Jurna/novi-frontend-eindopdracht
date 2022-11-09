@@ -10,7 +10,7 @@ function NavBar() {
     const {isAuth, logout} = useContext(AuthContext);
 
     function changeNavbar() {
-        if (window.scrollY >= 50) {
+        if (window.scrollY >= 60) {
             setNavbar(false)
         } else {
             setNavbar(true)
