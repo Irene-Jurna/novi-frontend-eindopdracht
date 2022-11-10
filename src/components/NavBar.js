@@ -10,7 +10,7 @@ function NavBar() {
     const {isAuth, logout} = useContext(AuthContext);
 
     function changeNavbar() {
-        if (window.scrollY >= 60) {
+        if (window.scrollY >= 50) {
             setNavbar(false)
         } else {
             setNavbar(true)
@@ -35,7 +35,7 @@ function NavBar() {
                 >Find recipes</NavLink></li>
             </ul>
             <div>
-                {isAuth ?
+                {isAuth.isAuth ?
                     <button
                         type="button"
                         className="navbar-button"

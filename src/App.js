@@ -34,7 +34,7 @@ function App() {
                         <Login />
                     </Route>
                     <Route path="/profile">
-                        {isAuth ? <Profile /> : <Redirect to="/" />}
+                        {isAuth.isAuth ? <Profile /> : <Redirect to="/" />}
                     </Route>
                 </Switch>
             </section>

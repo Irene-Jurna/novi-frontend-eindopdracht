@@ -3,7 +3,6 @@ import Button from "../../components/Button";
 import {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
-import radish from '../../assets/radish.png'
 
 function RecipeSearcher() {
     const [searchValue, setSearchValue] = useState('');

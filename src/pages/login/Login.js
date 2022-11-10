@@ -2,13 +2,24 @@ import React, {useContext} from "react";
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 import './Login.css'
+import axios from "axios";
 
 function Login() {
     const {login} = useContext(AuthContext);
 
-    function handleSubmit(e) {
+    // Verstuur inloggegevens via een post-request naar de backend. Er komt een token terug. De rest door context (token opslaan in localStorage, nieuwe data opvragen van gebruiker als nodig, gegevens opslaan in Context, authentication naar true)
+
+    async function handleSubmit(e) {
         e.preventDefault();
-        login();
+        try {
+            const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin', {
+                username: 'Pietje Puk',
+                password: '123456',
+            });
+            login(response.data.accessToken);
+        } catch(e) {
+            console.error(e);
+        }
     }
 
     return (
