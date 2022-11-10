@@ -65,8 +65,8 @@ function Home() {
 
     return (
         <>
-            <section className=" home-container row-container-top yellow-background">
-                <div className="home">
+            <section className="background-image row-container-top yellow-background">
+                <div>
                     <h1>VanVeg</h1>
                     <p className="intro-text">VanVeg is the vegan Hot spot online. Our mouth-watering, traditional
                         curries from all over the
@@ -78,9 +78,6 @@ function Home() {
                     />
                 </div>
             </section>
-            {/*<section>*/}
-            {/*    <h2 className="h2-colored">Top recipe's today</h2>*/}
-            {/*</section>*/}
             <section>
                 <h2 className="row-container">Today's top recipes</h2>
             </section>

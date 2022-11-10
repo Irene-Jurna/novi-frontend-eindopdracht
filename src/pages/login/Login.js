@@ -12,7 +12,7 @@ function Login() {
     }
 
     return (
-            <article className="green-background row-container-top home">
+            <article className="green-background full-screen">
             <h1>Login</h1>
             <p>Login to find recipes that suit your diet, such as lactose-free, FODMAP, or high on protein.</p>
             <article className="form-items"></article>

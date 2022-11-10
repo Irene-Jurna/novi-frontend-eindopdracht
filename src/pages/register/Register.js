@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 function Register() {
     return (
-        <article className="pink-background row-container-top home">
+        <article className="full-screen pink-background">
             <section className="form-items">
         <h1>Je wil je registreren, hoera!</h1>
             <form>
