@@ -2,6 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 function Profile() {
+
+
     return (
         <article className="blue-background row-container-top home">
             <h1>Welcome to your profile page</h1>

@@ -1,7 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import './Register.css'
 import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
+
+// Voor CSS in de banana security professional kijken :)
 
 function Register() {
     const [email, setEmail] = useState('');

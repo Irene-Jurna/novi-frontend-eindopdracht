@@ -35,7 +35,7 @@ function NavBar() {
                 >Find recipes</NavLink></li>
             </ul>
             <div>
-                {isAuth.isAuth ?
+                {isAuth ?
                     <button
                         type="button"
                         className="navbar-button"
