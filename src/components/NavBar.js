@@ -36,26 +36,35 @@ function NavBar() {
             </ul>
             <div>
                 {isAuth ?
-                    <button
-                        type="button"
-                        className="navbar-button"
-                        onClick={logout}
-                    >Logout
-                    </button>
+                    <div>
+                        <button
+                            type="button"
+                            className="navbar-button"
+                            onClick={() => history.push('/profile')}
+                        >
+                            Profile
+                        </button>
+                        <button
+                            type="button"
+                            className="navbar-button"
+                            onClick={logout}
+                        >Logout
+                        </button>
+                    </div>
                     :
                     <div>
-                    <button
-                        type="button"
-                        className="navbar-button"
-                        onClick={() => history.push('/login')}
-                    >Login
-                    </button>
-                    <button
-                        type="button"
-                        className="navbar-button"
-                        onClick={() => history.push('/register')}
-                    >Register
-                    </button>
+                        <button
+                            type="button"
+                            className="navbar-button"
+                            onClick={() => history.push('/login')}
+                        >Login
+                        </button>
+                        <button
+                            type="button"
+                            className="navbar-button"
+                            onClick={() => history.push('/register')}
+                        >Register
+                        </button>
                     </div>
                 }
             </div>

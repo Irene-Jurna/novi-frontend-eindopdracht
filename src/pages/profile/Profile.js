@@ -1,14 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
 
 function Profile() {
-
+const {user} = useContext(AuthContext);
 
     return (
         <article className="blue-background row-container-top home">
             <h1>Welcome to your profile page</h1>
             <section>
-                <h2>Secret profile-content</h2>
+                <h2>Secret profile-content of {user.user}</h2>
                 <p>Hyakujo - who was a famous Chinese Zen teacher would work alongside his students even when he reached the ripe old age of 80. His work included tending the gardens keeping the monastery grounds clean and tidy.
 
                     His students felt he should stop work and rest his aged body but he just would not listen to their advice. So to make him stop they hid away his tools where he couldn't find them.

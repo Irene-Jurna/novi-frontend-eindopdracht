@@ -1,4 +1,4 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
 
@@ -11,6 +11,20 @@ function AuthContextProvider({children}) {
         status: 'pending',
     });
     const history = useHistory();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            fetchUserData(token);
+        } else {
+            toggleIsAuth({
+                ...isAuth,
+                isAuth: false,
+                user: null,
+                status: 'done',
+            });
+        }
+    }, []);
 
     function login(token) {
         // console.log(token)
@@ -33,7 +47,8 @@ function AuthContextProvider({children}) {
                     user: {
                         email: result.data.email,
                         user: result.data.username,
-                    }
+                    },
+                    status: 'done',
                 });
                 console.log(result);
             } catch (e) {
@@ -61,10 +76,9 @@ function AuthContextProvider({children}) {
 
     return (
         <AuthContext.Provider value={contextData}>
-            {children}
+            {isAuth.status === 'done' ? children : <p>We're preparing all the ingredients...</p>}
         </AuthContext.Provider>
     );
 }
-
 
 export default AuthContextProvider;

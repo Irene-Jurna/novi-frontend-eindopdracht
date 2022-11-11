@@ -19,7 +19,6 @@ function Login() {
                 username: username,
                 password: password,
             });
-            console.log(response);
             login(response.data.accessToken);
         } catch (e) {
             console.error(e);
