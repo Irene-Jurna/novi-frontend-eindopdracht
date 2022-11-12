@@ -1,47 +1,137 @@
-import React from "react";
-import './RecipeQuestions.css'
+import React, { useCallback, useMemo, useState } from "react";
+import "./RecipeQuestions.css";
+import Button from "../../components/Button";
+import axios from "axios";
 
 function RecipeQuestions() {
-    return(
-            <section className="full-screen green-background">
-                <h2>Find all the ingredients for your perfect recipe</h2>
+    const [selectedOption, setSelectedOption] = useState({
+        mealType: "",
+        time: "",
+        cuisineType: "",
+        health: "",
+    });
+
+    const edamameId = "4e1e2f8f";
+    const edamameKey = "324092c9d55a77b05f596a354fa9d42f";
+
+    //useCallBack voert functie uit. UseMemo slaat dingen op
+    const handleClick = useCallback(
+        (key) =>
+            ({ target: { value } }) => {
+                setSelectedOption((prevState) => {
+                    console.log(key, value);
+                    return {
+                        ...prevState,
+                        [key]: value,
+                    };
+                });
+            },
+        [setSelectedOption]
+    );
+
+    //Object.values checken in mdn web docs
+    //Uit map komt altijd een array, uit reduce kan vanalles komen
+    const objectToString = useMemo(
+        () =>
+            Object.entries(selectedOption).reduce(
+                (previousValue, [key, value]) => {
+                    if (!value) return previousValue;
+                    if (!previousValue) return `${key}=${value}`;
+                    return `${previousValue}&${key}=${value}`;
+                },
+                ""
+            ),
+        [selectedOption]
+    );
+
+    async function getRecipes() {
+        console.log(objectToString);
+        try {
+            const response = await axios.get(
+                `https://api.edamam.com/api/recipes/v2?type=public&app_id=${edamameId}&app_key=${edamameKey}&health=vegan&${objectToString}`
+            );
+            console.log(response);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    // Je kan ook alleen de geselecteerde optie in je State opslaan. Of een object met alle opties met een Boolean ‘isSelected’ per optie
+    // React form hooks librray & Formik
+
+    return (
+        <section className="full-screen green-background">
+            <h2>Find all the ingredients for your perfect recipe</h2>
             <form className="form-question-list">
-                <span className="form-text">The recipe I'd like to make is for </span>
-                <select className="form-dropdown-option" id="questionType">
-                    <option value="none"></option>
-                    <option value="breakfast">breakfast</option>
-                    <option value="lunch">lunch</option>
-                    <option value="dinner">dinner</option>
-                    <option value="teatime">tea or snack time</option>
-                    <option value="cocktailparty">a cocktail party!</option>
+                <span className="form-text">
+                    The recipe I'd like to make is for{" "}
+                </span>
+                <select
+                    className="form-dropdown-option"
+                    id="questionType"
+                    value={selectedOption.mealType}
+                    onChange={handleClick("mealType")}
+                >
+                    <option value=""></option>
+                    <option value="Breakfast">breakfast</option>
+                    <option value="Lunch">lunch</option>
+                    <option value="Dinner">dinner</option>
+                    <option value="Teatime">tea or snack time</option>
+                    <option value="Cocktailparty">a cocktail party!</option>
                 </select>
-                <span className="form-text"> . My cooking session preferably takes </span>
-                <select className="form-dropdown-option" id="questionTime">
+                <span className="form-text">
+                    {" "}
+                    . My cooking session preferably takes{" "}
+                </span>
+                <select
+                    className="form-dropdown-option"
+                    id="questionTime"
+                    value={selectedOption.time}
+                    onChange={handleClick("time")}
+                >
                     <option value="none"></option>
-                    <option value="longTime">lots of time, I love long cooking sessions!</option>
-                    <option value="averageTime">30 minutes to one hour</option>
-                    <option value="shortTime">as little time as possible</option>
+                    <option value="60%2B">
+                        lots of time, I love long cooking sessions!
+                    </option>
+                    <option value="30-60">30 minutes to one hour</option>
+                    <option value="30">as little time as possible</option>
                 </select>
-                    <span className="form-text"> . And I'd love to cook</span>
-                    <select className="form-dropdown-menu" id="questionCuisine">
-                    <option value="none"></option>
-                    <option value="american">American</option>
-                    <option value="asian">Asian</option>
-                    <option value="southAmerican">South American</option>
-                    <option value="european">European</option>
-                    <option value="anyCuisine">any type of</option>
-                    </select>
+                <span className="form-text"> . And I'd love to cook</span>
+                <select
+                    className="form-dropdown-menu"
+                    id="questionCuisine"
+                    value={selectedOption.cuisineType}
+                    onChange={handleClick("cuisineType")}
+                >
+                    <option value=""></option>
+                    <option value="American">American</option>
+                    <option value="Asian">Asian</option>
+                    <option value="SouthAmerican">South American</option>
+                    <option value="European">European</option>
+                    <option value="">any type of</option>
+                </select>
                 <span className="form-text"> cuisine. Diets? </span>
-                <select className="form-dropdown-menu" id="questionDiets">
-                    <option value="none"></option>
-                    <option value="wheatFree">wheat-free</option>
-                    <option value="nutFree">nut-free</option>
-                    <option value="fodmap">FODMAP</option>
-                    <option value="noDiets">No diets, show me everything!</option>
+                <select
+                    className="form-dropdown-menu"
+                    id="questionDiets"
+                    value={selectedOption.health}
+                    onChange={handleClick("health")}
+                >
+                    <option value=""></option>
+                    <option value="wheat-free">wheat-free</option>
+                    <option value="tree-and-nut">nut-free</option>
+                    <option value="fodmap-free">FODMAP</option>
+                    <option value="">No diets, show me everything!</option>
                 </select>
-                <button className="form=button">Open the cookbook</button>
+                <div className="center">
+                    <Button
+                        type="button"
+                        onClick={getRecipes}
+                        buttonText="Open the cookbook"
+                    />
+                </div>
             </form>
-            </section>
+        </section>
     );
 }
 

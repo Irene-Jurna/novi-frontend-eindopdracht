@@ -1,14 +1,12 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
 import './Button.css';
 
-function Button({type, buttonText, buttonName}) {
-    const history = useHistory();
+function Button({type, buttonText, onClick}) {
     return (
         <button
             type={type}
             className="button"
-            onClick={() => history.push('/recipe-searchbar')}
+            onClick={onClick}
         >{buttonText}
         </button>
     );

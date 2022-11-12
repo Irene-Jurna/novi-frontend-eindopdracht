@@ -2,11 +2,13 @@ import './Home.css';
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Button from "../../components/Button";
+import {useHistory} from "react-router-dom";
 
 function Home() {
     const [recipes, setRecipes] = useState([]);
     const edamameId = '4e1e2f8f';
     const edamameKey = '324092c9d55a77b05f596a354fa9d42f';
+    const history = useHistory();
 
     const veggieImages = [
         {
@@ -75,6 +77,7 @@ function Home() {
                     <Button
                         type="text"
                         buttonText="Find recipes"
+                        onClick={() => history.push('/recipe-searchbar')}
                     />
                 </div>
             </section>

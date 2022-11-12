@@ -32,11 +32,11 @@ function NavBar() {
                 <li><NavLink
                     to="/recipe-searchbar"
                     activeClassName="navbar-active-link"
-                >Find recipes</NavLink></li>
+                >Recipe searchbar</NavLink></li>
                 <li><NavLink
                     to="/recipe-questions"
                     activeClassName="navbar-active-link">
-                    Help me find my perfect recipe
+                    Recipe questions
                 </NavLink>
                 </li>
             </ul>
