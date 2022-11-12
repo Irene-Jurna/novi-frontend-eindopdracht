@@ -33,6 +33,12 @@ function NavBar() {
                     to="/recipe-searchbar"
                     activeClassName="navbar-active-link"
                 >Find recipes</NavLink></li>
+                <li><NavLink
+                    to="/recipe-questions"
+                    activeClassName="navbar-active-link">
+                    Help me find my perfect recipe
+                </NavLink>
+                </li>
             </ul>
             <div>
                 {isAuth ?

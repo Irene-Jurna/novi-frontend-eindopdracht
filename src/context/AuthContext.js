@@ -4,11 +4,12 @@ import axios from "axios";
 
 export const AuthContext = createContext({});
 
+//Klopt de status 'done' hieronder? In banana professional is het pending, maar dan start mijn app niet op. Als je nu de app ververst op een andere pagina dan profile, linkt die naar profile (als je ingelogd bent)
 function AuthContextProvider({children}) {
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
         user: null,
-        status: 'pending',
+        status: 'done',
     });
     const history = useHistory();
 

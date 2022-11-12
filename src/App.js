@@ -3,6 +3,7 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import Home from './pages/home/Home'
 import RecipeSearcher from './pages/recipe search function/RecipeSearcher'
 import RecipeInformation from "./pages/recipe page/RecipeInformation";
+import RecipeQuestions from "./pages/recipe questions/RecipeQuestions";
 import {useContext} from "react";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
@@ -25,6 +26,9 @@ function App() {
                     </Route>
                     <Route exact path="/recipe/:id">
                         <RecipeInformation/>
+                    </Route>
+                    <Route exact path="/recipe-questions">
+                        <RecipeQuestions />
                     </Route>
                     <Route exact path="/register">
                         <Register />

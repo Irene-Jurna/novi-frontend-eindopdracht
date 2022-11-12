@@ -1,0 +1,9 @@
+.form-question-list {
+    max-width: 600px;
+    padding: 20px 0;
+}
+
+.form-text {
+    line-height: 34px;
+    font-size: 18px
+}
