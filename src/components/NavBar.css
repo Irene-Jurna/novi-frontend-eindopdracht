@@ -7,6 +7,11 @@
     justify-content: space-around;
 }
 
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+}
+
 .navbar-onscroll {
     display: flex;
     width: 100%;
@@ -20,6 +25,7 @@
 
 .navbar-links {
     list-style: none;
+    font-family: 'Encode Sans Condensed', sans-serif;
 }
 
 .navbar-links > li {
@@ -30,10 +36,23 @@
     display: flex;
 }
 
-.navbar-active-link {
-    text-decoration: none;
+nav a,
+nav a:visited {
     color: black;
-    font-family: 'Encode Sans Condensed', sans-serif;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #A6C48A;
+}
+
+.active-link {
+    text-decoration: underline;
+    color: black;
+}
+
+.default-link {
+    text-decoration: none;
 }
 
 .navbar-button {

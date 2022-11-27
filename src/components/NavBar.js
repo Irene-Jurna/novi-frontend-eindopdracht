@@ -1,19 +1,19 @@
-import React, {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import logo from "../assets/logo.png";
-import {NavLink, useHistory} from "react-router-dom";
-import "./NavBar.css"
-import {AuthContext} from "../context/AuthContext";
+import { NavLink, useHistory } from "react-router-dom";
+import "./NavBar.css";
+import { AuthContext } from "../context/AuthContext";
 
 function NavBar() {
     const history = useHistory();
     const [navbar, setNavbar] = useState(false);
-    const {isAuth, logout} = useContext(AuthContext);
+    const { isAuth, logout } = useContext(AuthContext);
 
     function changeNavbar() {
         if (window.scrollY >= 50) {
-            setNavbar(false)
+            setNavbar(false);
         } else {
-            setNavbar(true)
+            setNavbar(true);
         }
     }
 
@@ -22,31 +22,50 @@ function NavBar() {
     return (
         <nav className={navbar ? "navbar-container" : "navbar-onscroll"}>
             <article className="navbar-logo">
-                <img src={logo} alt="VanVeg logo" className="logo-img"/>
+                <NavLink to="/" classname="home-button">
+                    <a href="" className="logo-img"></a>
+                    <img src={logo} alt="VanVeg logo" className="logo-img" />
+                </NavLink>
             </article>
             <ul className="navbar-links">
-                <li><NavLink
-                    to="/"
-                    activeClassName="navbar-active-link"
-                >Home</NavLink></li>
-                <li><NavLink
-                    to="/recipe-searchbar"
-                    activeClassName="navbar-active-link"
-                >Recipe searchbar</NavLink></li>
-                <li><NavLink
-                    to="/recipe-questions"
-                    activeClassName="navbar-active-link">
-                    Recipe questions
-                </NavLink>
+                <li>
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            isActive ? "active-link" : "default-link"
+                        }
+                    >
+                        Home
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to="/recipe-searchbar"
+                        className={({ isActive }) =>
+                            isActive ? "active-link" : "default-link"
+                        }
+                    >
+                        Recipe searchbar
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to="/recipe-questions"
+                        className={({ isActive }) =>
+                            isActive ? "active-link" : "default-link"
+                        }
+                    >
+                        Recipe questions
+                    </NavLink>
                 </li>
             </ul>
-            <div>
-                {isAuth ?
+            <div className="navbar-buttons">
+                {isAuth ? (
                     <div>
                         <button
                             type="button"
                             className="navbar-button"
-                            onClick={() => history.push('/profile')}
+                            onClick={() => history.push("/profile")}
                         >
                             Profile
                         </button>
@@ -54,28 +73,31 @@ function NavBar() {
                             type="button"
                             className="navbar-button"
                             onClick={logout}
-                        >Logout
+                        >
+                            Logout
                         </button>
                     </div>
-                    :
+                ) : (
                     <div>
                         <button
                             type="button"
                             className="navbar-button"
-                            onClick={() => history.push('/login')}
-                        >Login
+                            onClick={() => history.push("/login")}
+                        >
+                            Login
                         </button>
                         <button
                             type="button"
                             className="navbar-button"
-                            onClick={() => history.push('/register')}
-                        >Register
+                            onClick={() => history.push("/register")}
+                        >
+                            Register
                         </button>
                     </div>
-                }
+                )}
             </div>
         </nav>
-    )
+    );
 }
 
 export default NavBar;

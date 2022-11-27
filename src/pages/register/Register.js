@@ -1,29 +1,32 @@
-import React, {useState} from "react";
-import './Register.css'
-import {Link, useHistory} from "react-router-dom";
+import React, { useState } from "react";
+import "./Register.css";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 // Voor CSS in de banana security professional kijken :)
 
 function Register() {
-    const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const history = useHistory();
 
     async function handleSubmit(e) {
         e.preventDefault();
 
         try {
-            const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signup', {
-                email: email,
-                username: username,
-                password: password,
-            });
+            const response = await axios.post(
+                "https://frontend-educational-backend.herokuapp.com/api/auth/signup",
+                {
+                    email: email,
+                    username: username,
+                    password: password,
+                }
+            );
             // Hier komt nog een headers object met keys. Les 7 Nova 30:30 . Bearer etc.
             console.log(response);
             console.log(email, username, password);
-            history.push('/login');
+            history.push("/login");
         } catch (e) {
             console.error(e);
         }
@@ -65,16 +68,15 @@ function Register() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </label>
-                    <button
-                        type="submit"
-                        className="form-button"
-                    >
+                    <button type="submit" className="form-button">
                         Register
                     </button>
 
-                    <p>Heb je al een account? Je kunt <Link to="/login">hier</Link> inloggen.</p>
+                    <p>
+                        Heb je al een account? Je kunt{" "}
+                        <Link to="/login">hier</Link> inloggen.
+                    </p>
                 </form>
-
             </section>
         </article>
     );
