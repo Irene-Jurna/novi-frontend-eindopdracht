@@ -57,7 +57,6 @@ function Home() {
                     `https://api.edamam.com/api/recipes/v2?type=public&q=q&app_id=${edamameId}&app_key=${edamameKey}&health=vegan&random=true`
                 );
                 console.log(result.data.hits);
-                console.log(result.data.hits[0].recipe);
                 setRecipes(result.data.hits);
             } catch (e) {
                 console.error(e);

@@ -38,7 +38,13 @@ function RecipeSearcher() {
 
     return (
         <>
-            <section className="row-container-top yellow-background">
+            <section
+                className={
+                    query
+                        ? "row-container-top champagne-background"
+                        : "full-screen champagne-background"
+                }
+            >
                 <h2>Find your recipe</h2>
                 <p>Search your favorites</p>
                 <form
