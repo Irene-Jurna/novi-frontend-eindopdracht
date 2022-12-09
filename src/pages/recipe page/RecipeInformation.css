@@ -12,15 +12,6 @@
     list-style: none;
 }
 
-/*.radish-img {*/
-/*    position: absolute;*/
-/*    width: 45%;*/
-/*    height: auto;*/
-/*    top: 10vw;*/
-/*    right: 5vw;*/
-/*    z-index: -1;*/
-/*}*/
-
 .first ~ li {
     color: #A6C48A;
 }
@@ -36,6 +27,10 @@
     max-width: 150px;
 }
 
+img {
+    padding-bottom: 20px;
+}
+
 /* ------------------------------- 5. Media Queries -------------------------------- */
 
 @media screen and (max-width: 576px) {
@@ -47,7 +42,8 @@
 @media screen and (min-width: 768px) {
     .info-border {
         border: solid #A6C48A;
-        padding: 75px 125px;
+        padding: 25px 125px;
+        margin: 0 10vw;
     }
 }
 

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import logo from "../assets/logo.png";
 import { NavLink, useHistory } from "react-router-dom";
-import "./NavBar.css";
+import styles from "./NavBar.css";
 import { AuthContext } from "../context/AuthContext";
 
 function NavBar() {
@@ -32,7 +32,9 @@ function NavBar() {
                     <NavLink
                         to="/"
                         className={({ isActive }) =>
-                            isActive ? "active-link" : "default-link"
+                            isActive
+                                ? styles["active-link"]
+                                : styles["default-link"]
                         }
                     >
                         Home
@@ -42,7 +44,9 @@ function NavBar() {
                     <NavLink
                         to="/recipe-searchbar"
                         className={({ isActive }) =>
-                            isActive ? "active-link" : "default-link"
+                            isActive
+                                ? styles["active-link"]
+                                : styles["default-link"]
                         }
                     >
                         Recipe searchbar
@@ -52,7 +56,9 @@ function NavBar() {
                     <NavLink
                         to="/recipe-questions"
                         className={({ isActive }) =>
-                            isActive ? "active-link" : "default-link"
+                            isActive
+                                ? styles["active-link"]
+                                : styles["default-link"]
                         }
                     >
                         Recipe questions

@@ -1,5 +1,4 @@
 import "./RecipeSearcher.css";
-import Button from "../../components/Button";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
@@ -8,6 +7,7 @@ function RecipeSearcher() {
     const [searchValue, setSearchValue] = useState("");
     const [recipes, setRecipes] = useState([]);
     const [query, setQuery] = useState("");
+    const [id, setId] = useState("");
     const history = useHistory();
 
     const edamameId = "4e1e2f8f";
@@ -21,6 +21,13 @@ function RecipeSearcher() {
                 );
                 console.log(response.data.hits);
                 setRecipes(response.data.hits);
+                const findId =
+                    response.data.hits[0].recipe.uri.lastIndexOf("_");
+                const findCompleteId = response.data.hits[0].recipe.uri.slice(
+                    findId + 1
+                );
+                setId(findCompleteId);
+                console.log(response.data.hits[0].recipe.uri);
             } catch (e) {
                 console.error(e);
             }
@@ -76,11 +83,7 @@ function RecipeSearcher() {
                         >
                             <ul
                                 className="recipe-ul"
-                                onClick={() =>
-                                    history.push(
-                                        `/recipe/${recipe.recipe.label}`
-                                    )
-                                }
+                                onClick={() => history.push(`/recipe/${id}`)}
                             >
                                 <li className="recipe-item">
                                     {recipe.recipe.label}

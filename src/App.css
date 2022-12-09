@@ -40,6 +40,11 @@ p {
     padding-bottom: 20px;
 }
 
+li {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    font-size: 16px;
+}
+
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 /* --------------- 3.1 Color palette  ----------------------- */
