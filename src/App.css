@@ -78,7 +78,7 @@ li {
     background-color: rgba(116, 211, 174, 0.3);
 }
 
-/* --------------- 3.2 Reusables --------------------------- */
+/* --------------- 3.2 Reusables General --------------------------- */
 
 .row-container-top {
     display: flex;
@@ -107,6 +107,47 @@ li {
     padding: 250px 150px;
 }
 
+/* --------------- 3.2 Forms --------------------------- */
+
+.form-question-list {
+    max-width: 600px;
+    padding: 20px 0;
+}
+
+.form-text {
+    line-height: 34px;
+    font-size: 18px
+}
+
+.form-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-input {
+    /*Zie mediaquery*/
+}
+
+.form-button {
+    padding: 7px 30px;
+    margin: 20px 20px 20px 0;
+    width: 150px;
+    border-radius: 3px;
+    border-color: #A6C48A;
+    border-style: solid;
+    cursor: pointer;
+    font-family: 'Encode Sans Condensed', sans-serif;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --------------- 3.2 Other --------------------------- */
+
 .recipe-list {
     cursor: pointer;
 }
@@ -133,6 +174,10 @@ li {
         justify-content: flex-end;
         box-sizing: border-box;
         align-items: center;
+    }
+
+    .form-input {
+        margin-left: 10px;
     }
 }
 

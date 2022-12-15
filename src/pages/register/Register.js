@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import "./Register.css";
+import "../../App.css";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-
-// Voor CSS in de banana security professional kijken :)
 
 function Register() {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, toggleError] = useState(false);
     const history = useHistory();
 
     async function handleSubmit(e) {
         e.preventDefault();
+        toggleError(false);
 
         try {
             const response = await axios.post(
@@ -23,12 +23,12 @@ function Register() {
                     password: password,
                 }
             );
-            // Hier komt nog een headers object met keys. Les 7 Nova 30:30 . Bearer etc.
             console.log(response);
             console.log(email, username, password);
             history.push("/login");
         } catch (e) {
             console.error(e);
+            toggleError(true);
         }
     }
 
@@ -36,10 +36,14 @@ function Register() {
         <article className="full-screen pink-background">
             <section>
                 <h1>Je wil je registreren, hoera!</h1>
-                <form onSubmit={handleSubmit} className="register-form">
+                <form
+                    onSubmit={handleSubmit}
+                    className="register-form form-text"
+                >
                     <label htmlFor="email-field">
                         Email:
                         <input
+                            className="form-input"
                             type="email"
                             id="email-field"
                             name="email"
@@ -51,6 +55,7 @@ function Register() {
                     <label htmlFor="username-field">
                         Username:
                         <input
+                            className="form-input"
                             type="text"
                             id="username-field"
                             value={username}
@@ -61,6 +66,7 @@ function Register() {
                     <label htmlFor="password-field">
                         Password:
                         <input
+                            className="form-input"
                             type="password"
                             id="password-field"
                             name="password"
@@ -68,6 +74,12 @@ function Register() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </label>
+                    {error && (
+                        <p className="form-error">
+                            Registration error. Please fill in a valid email
+                            address and a password of minimal 6 characters.
+                        </p>
+                    )}
                     <button type="submit" className="form-button">
                         Register
                     </button>

@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
-import "./RecipeQuestions.css";
+import "../../App.css";
 import Button from "../../components/Button";
 import axios from "axios";
 
@@ -123,7 +123,7 @@ function RecipeQuestions() {
                     <option value="fodmap-free">FODMAP</option>
                     <option value="">No diets, show me everything!</option>
                 </select>
-                <div className="center">
+                <div className="form-center">
                     <Button
                         type="button"
                         onClick={getRecipes}

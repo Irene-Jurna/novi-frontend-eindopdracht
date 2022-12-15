@@ -1,19 +1,19 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import "./Login.css";
+import "../../App.css";
 import axios from "axios";
 
 function Login() {
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
-    // const [error, setError] = useState('');
+    const [error, toggleError] = useState(false);
     const { login } = useContext(AuthContext);
-    // user komt uit de les van Sam, misschien niet nodig voor deze opdracht (staat niet in de uitwerkingen)
-    // Verstuur inloggegevens via een post-request naar de backend. Er komt een token terug. De rest door context (token opslaan in localStorage, nieuwe data opvragen van gebruiker als nodig, gegevens opslaan in Context, authentication naar true)
 
     async function handleSubmit(e) {
         e.preventDefault();
+        toggleError(false);
+
         try {
             const response = await axios.post(
                 "https://frontend-educational-backend.herokuapp.com/api/auth/signin",
@@ -25,6 +25,7 @@ function Login() {
             login(response.data.accessToken);
         } catch (e) {
             console.error(e);
+            toggleError(true);
         }
     }
 
@@ -36,10 +37,11 @@ function Login() {
                 FODMAP, or high on protein.
             </p>
             <article className="form-items"></article>
-            <form onSubmit={handleSubmit} className="register-form">
+            <form onSubmit={handleSubmit} className="register-form form-text">
                 <label htmlFor="email-field">
                     Username:
                     <input
+                        className="form-input"
                         type="text"
                         id="username-field"
                         name="username"
@@ -51,6 +53,7 @@ function Login() {
                 <label htmlFor="password-field">
                     Password:
                     <input
+                        className="form-input"
                         type="password"
                         id="password-field"
                         name="password"
@@ -58,8 +61,13 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
-
-                <button type="submit" className="button">
+                {error && (
+                    <p className="form-error">
+                        Something went wrong. Did you fill in the right username
+                        and password? Please try again.
+                    </p>
+                )}
+                <button type="submit" className="form-button">
                     Login
                 </button>
             </form>
