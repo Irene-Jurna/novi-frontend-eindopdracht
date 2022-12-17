@@ -31,6 +31,12 @@ img {
     padding-bottom: 20px;
 }
 
+.recipe-section-title {
+    display: flex;
+    justify-content: center;
+    padding-top: 70px;
+}
+
 /* ------------------------------- 5. Media Queries -------------------------------- */
 
 @media screen and (max-width: 576px) {

@@ -54,9 +54,16 @@ function RecipeInformation() {
                                 );
                             }
                         )}
-                    <Button type="text" buttonText="See full recipe" />
+                    <Button
+                        type="text"
+                        buttonText="See full recipe"
+                        onClick={() => {
+                            window.open(`${recipeInformations.url}`, "_blank");
+                        }}
+                    />
                 </div>
             </section>
+            <h2 className="recipe-section-title">This recipe is: </h2>
             <section className="row-container health-container">
                 {recipeInformations &&
                     recipeInformations.healthLabels.map((healthInformation) => {

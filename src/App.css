@@ -37,7 +37,7 @@ h2 {
 p {
     font-family: 'Encode Sans Condensed', sans-serif;
     font-size: 18px;
-    padding-bottom: 20px;
+    padding: 20px 0;
 }
 
 li {
@@ -105,6 +105,12 @@ li {
     height: 100vh;
     width: 100vw;
     padding: 250px 150px;
+}
+
+.item-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* --------------- 3.2 Forms --------------------------- */
