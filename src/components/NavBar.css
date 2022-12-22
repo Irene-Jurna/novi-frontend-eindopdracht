@@ -1,0 +1,73 @@
+/* --------------- 4.1 Navbar ------------------------- */
+.navbar-container {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    padding: 20px 50px;
+    justify-content: space-around;
+}
+
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-onscroll {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
+    position: fixed;
+    padding: 20px 100px;
+    justify-content: space-around;
+    flex: 1 1 auto;
+}
+
+.navbar-links {
+    list-style: none;
+    font-family: 'Encode Sans Condensed', sans-serif;
+}
+
+.navbar-links > li {
+    padding: 0 10px;
+}
+
+.navbar-logo {
+    display: flex;
+}
+
+nav a,
+nav a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #A6C48A;
+}
+
+.active-link {
+    text-decoration: underline;
+    color: black;
+}
+
+.default-link {
+    text-decoration: none;
+}
+
+.navbar-button {
+    border-radius: 4px;
+    border: none;
+    padding: 8px 16px;
+    background-color: #678D58;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-button:hover {
+    cursor: pointer;
+}
+
+.navbar-button + .navbar-button {
+    margin-left: 8px;
+}
