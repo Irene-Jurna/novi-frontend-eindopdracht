@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/Button";
 import HealthInfoCard from "../../components/HealthInfoCard";
+import RecipeInfoCard from "../../components/RecipeInfoCard";
 
 function RecipeInformation() {
     const { id } = useParams();
@@ -33,16 +34,13 @@ function RecipeInformation() {
             <section className="row-container-top yellow-background">
                 <div className="info-border">
                     <h1 className="recipe-title">{recipeInformations.label}</h1>
-                    <p>
-                        {recipeInformations.dishType} |{" "}
-                        {recipeInformations.cuisineType}
-                    </p>
-                    <img
-                        src={recipeInformations.image}
-                        alt={recipeInformations.label}
+                    <RecipeInfoCard
+                        recipeDishType={recipeInformations.dishType}
+                        recipeCuisineType={recipeInformations.cuisineType}
+                        imageSource={recipeInformations.image}
+                        imageAlt={recipeInformations.label}
                     />
                     <p>Ingredients:</p>
-
                     {recipeInformations &&
                         recipeInformations.ingredientLines.map(
                             (recipeInformation) => {
