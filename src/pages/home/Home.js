@@ -63,7 +63,6 @@ function Home() {
                 console.error(e);
             }
         }
-
         fetchRecipes();
     }, []);
 
