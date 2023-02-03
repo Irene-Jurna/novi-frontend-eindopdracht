@@ -2,6 +2,7 @@ import "./RecipeSearcher.css";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import RecipeCardOnlyText from "../../components/RecipeCardOnlyText";
 
 function RecipeSearcher() {
     const [searchValue, setSearchValue] = useState("");
@@ -67,7 +68,6 @@ function RecipeSearcher() {
                             name="input-search"
                             value={searchValue}
                             placeholder="Type here"
-                            //className misschien niet nodig vanwege ID?
                             className="search-bar"
                             onChange={(e) => setSearchValue(e.target.value)}
                         />
@@ -77,27 +77,12 @@ function RecipeSearcher() {
             <section className="recipe-container">
                 {recipes.map((recipe) => {
                     return (
-                        <article
-                            className="recipe-list"
-                            key={recipe.recipe.label}
-                        >
-                            <ul
-                                className="recipe-ul"
-                                onClick={() => history.push(`/recipe/${id}`)}
-                            >
-                                <li className="recipe-item">
-                                    {recipe.recipe.label}
-                                    <p className="text-recipe-info">
-                                        {recipe.recipe.dishType} -{" "}
-                                        {recipe.recipe.cuisineType}
-                                    </p>
-                                    <p className="text-minutes">
-                                        Ready in {recipe.recipe.totalTime}{" "}
-                                        minutes
-                                    </p>
-                                </li>
-                            </ul>
-                        </article>
+                        <RecipeCardOnlyText
+                            recipeId={() => history.push(`/recipe/${id}`)}
+                            recipeTitle={recipe.recipe.label}
+                            recipeDishType={recipe.recipe.dishType}
+                            totalTime={recipe.recipe.totalTime}
+                        />
                     );
                 })}
             </section>

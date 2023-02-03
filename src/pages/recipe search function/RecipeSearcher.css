@@ -29,28 +29,6 @@
     padding-top: 20px;
 }
 
-.recipe-item:hover {
-    background-color: rgba(121, 251, 35, 0.3);
-}
-
-.recipe-item {
-    border: solid 2px #F6E7CB;
-    border-bottom-width: 50%;
-    list-style: none;
-    padding: 15px;
-    background-color: rgba(221, 151, 135, 0.3);
-    margin: 5px;
-    border-radius: 3px;
-}
-
-.text-recipe-info {
-    font-size: 16px;
-}
-
-.text-minutes {
-    font-size: 12px;
-}
-
 /* ------------------------------- 2. Media Queries -------------------------------- */
 
 @media screen and (min-width: 768px) {
@@ -59,11 +37,6 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-    }
-
-    .recipe-item {
-        width: 300px;
-        height: 150px;
     }
 }
 
