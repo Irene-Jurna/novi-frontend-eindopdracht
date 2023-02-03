@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/Button";
+import HealthInfoCard from "../../components/HealthInfoCard";
 
 function RecipeInformation() {
     const { id } = useParams();
@@ -68,11 +69,9 @@ function RecipeInformation() {
                 {recipeInformations &&
                     recipeInformations.healthLabels.map((healthInformation) => {
                         return (
-                            <ul className="health-list recipe-item">
-                                <li key={healthInformation}>
-                                    {healthInformation}
-                                </li>
-                            </ul>
+                            <HealthInfoCard
+                                healthInformation={healthInformation}
+                            />
                         );
                     })}
             </section>

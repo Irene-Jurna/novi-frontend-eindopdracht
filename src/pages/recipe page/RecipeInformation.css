@@ -21,12 +21,6 @@
     flex-wrap: wrap;
 }
 
-.health-list {
-    list-style: none;
-    min-width: 150px;
-    max-width: 150px;
-}
-
 img {
     padding-bottom: 20px;
 }
