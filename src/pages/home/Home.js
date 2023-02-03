@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "../../components/Button";
 import { useHistory } from "react-router-dom";
+import RecipeCardWithImage from "../../components/RecipeCardWithImage";
 
 function Home() {
     const [recipes, setRecipes] = useState([]);
@@ -90,35 +91,18 @@ function Home() {
                 <aside className="recipe-card-subcontainer">
                     {recipes.slice(0, 9).map((recipe, index) => {
                         return (
-                            <article
-                                className="recipe-card-item recipe-list"
-                                key={recipe.recipe.label}
-                            >
-                                <ul
-                                    className="recipe-url"
-                                    onClick={() =>
-                                        history.push(
-                                            `/recipe/${recipe.recipe.label}`
-                                        )
-                                    }
-                                >
-                                    <div className="recipe-card-image">
-                                        <img
-                                            className="fruit-img"
-                                            src={require(`../../assets/${veggieImages[index].image}.png`)}
-                                            alt={veggieImages[index].title}
-                                            key={veggieImages[index].title}
-                                        />
-                                    </div>
-                                    <div className="recipe-card-text">
-                                        <h3>{recipe.recipe.label}</h3>
-                                        <p className="text-specifications">
-                                            {recipe.recipe.dishType} -{" "}
-                                            {recipe.recipe.cuisineType}
-                                        </p>
-                                    </div>
-                                </ul>
-                            </article>
+                            <RecipeCardWithImage
+                                recipeTitle={recipe.recipe.label}
+                                recipeId={() =>
+                                    history.push(
+                                        `/recipe/${recipe.recipe.label}`
+                                    )
+                                }
+                                imageSource={require(`../../assets/${veggieImages[index].image}.png`)}
+                                imageKey={veggieImages[index].title}
+                                recipeDishType={recipe.recipe.dishType}
+                                recipeCuisineType={recipe.recipe.cuisineType}
+                            />
                         );
                     })}
                 </aside>
