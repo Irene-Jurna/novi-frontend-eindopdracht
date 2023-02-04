@@ -30,9 +30,9 @@ function RecipeInformation() {
     }, []);
 
     return (
-        <>
-            <section className="row-container-top yellow-background">
-                <div className="info-border">
+        <main>
+            <header className="row-container-top yellow-background">
+                <section className="info-border">
                     <h1 className="recipe-title">{recipeInformations.label}</h1>
                     <RecipeInfoCard
                         recipeDishType={recipeInformations.dishType}
@@ -60,10 +60,12 @@ function RecipeInformation() {
                             window.open(`${recipeInformations.url}`, "_blank");
                         }}
                     />
-                </div>
-            </section>
+                </section>
+            </header>
+
             <h2 className="recipe-section-title">This recipe is: </h2>
-            <section className="row-container health-container">
+
+            <article className="row-container health-container">
                 {recipeInformations &&
                     recipeInformations.healthLabels.map((healthInformation) => {
                         return (
@@ -72,8 +74,8 @@ function RecipeInformation() {
                             />
                         );
                     })}
-            </section>
-        </>
+            </article>
+        </main>
     );
 }
 

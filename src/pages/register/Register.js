@@ -33,64 +33,68 @@ function Register() {
     }
 
     return (
-        <article className="full-screen pink-background">
-            <section>
+        <main className="full-screen pink-background">
+            <header className="item-centered">
                 <h1>Je wil je registreren, hoera!</h1>
-                <form
-                    onSubmit={handleSubmit}
-                    className="register-form form-text"
-                >
-                    <label htmlFor="email-field">
-                        Email:
-                        <input
-                            className="form-input"
-                            type="email"
-                            id="email-field"
-                            name="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </label>
+            </header>
 
-                    <label htmlFor="username-field">
-                        Username:
-                        <input
-                            className="form-input"
-                            type="text"
-                            id="username-field"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
-                    </label>
+            <form onSubmit={handleSubmit} className="register-form form-text">
+                <label htmlFor="email-field">
+                    Email:
+                    <input
+                        className="form-input"
+                        type="email"
+                        id="email-field"
+                        name="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </label>
 
-                    <label htmlFor="password-field">
-                        Password:
-                        <input
-                            className="form-input"
-                            type="password"
-                            id="password-field"
-                            name="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </label>
+                <label htmlFor="username-field">
+                    Username:
+                    <input
+                        className="form-input"
+                        type="text"
+                        id="username-field"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </label>
+
+                <label htmlFor="password-field">
+                    Password:
+                    <input
+                        className="form-input"
+                        type="password"
+                        id="password-field"
+                        name="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </label>
+
+                <article>
                     {error && (
                         <p className="form-error">
                             Registration error. Please fill in a valid email
                             address and a password of minimal 6 characters.
                         </p>
                     )}
-                    <button type="submit" className="form-button">
-                        Register
-                    </button>
+                </article>
 
+                <button type="submit" className="form-button">
+                    Register
+                </button>
+
+                <article>
                     <p>
                         Heb je al een account? Je kunt{" "}
                         <Link to="/login">hier</Link> inloggen.
                     </p>
-                </form>
-            </section>
-        </article>
+                </article>
+            </form>
+        </main>
     );
 }
 

@@ -33,6 +33,7 @@ function RecipeSearcher() {
                 console.error(e);
             }
         }
+
         if (searchValue) {
             fetchRecipes();
         }
@@ -45,16 +46,19 @@ function RecipeSearcher() {
     }
 
     return (
-        <>
-            <section
+        <main>
+            <header
                 className={
                     query
                         ? "row-container-top champagne-background"
                         : "full-screen champagne-background"
                 }
             >
-                <h2>Find your recipe</h2>
-                <p>Search your favorites</p>
+                <section>
+                    <h2>Find your recipe</h2>
+                    <p>Search your favorites</p>
+                </section>
+
                 <form
                     className="search-container"
                     type="submit"
@@ -73,8 +77,9 @@ function RecipeSearcher() {
                         />
                     </label>
                 </form>
-            </section>
-            <section className="recipe-container">
+            </header>
+
+            <article className="recipe-container">
                 {recipes.map((recipe) => {
                     return (
                         <RecipeCardOnlyText
@@ -85,8 +90,8 @@ function RecipeSearcher() {
                         />
                     );
                 })}
-            </section>
-        </>
+            </article>
+        </main>
     );
 }
 

@@ -30,14 +30,19 @@ function Login() {
     }
 
     return (
-        <article className="green-background full-screen">
-            <h1>Login</h1>
-            <p>
-                Login to find recipes that suit your diet, such as lactose-free,
-                FODMAP, or high on protein.
-            </p>
-            <article className="form-items"></article>
-            <form onSubmit={handleSubmit} className="register-form form-text">
+        <main className="green-background full-screen">
+            <header className="item-centered">
+                <h1>Login</h1>
+                <p>
+                    Login to find recipes that suit your diet, such as
+                    lactose-free, FODMAP, or high on protein.
+                </p>
+            </header>
+
+            <form
+                onSubmit={handleSubmit}
+                className="register-form form-text form-items"
+            >
                 <label htmlFor="email-field">
                     Username:
                     <input
@@ -61,20 +66,28 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
-                {error && (
-                    <p className="form-error">
-                        Something went wrong. Did you fill in the right username
-                        and password? Please try again.
-                    </p>
-                )}
+
+                <article>
+                    {error && (
+                        <p className="form-error">
+                            Something went wrong. Did you fill in the right
+                            username and password? Please try again.
+                        </p>
+                    )}
+                </article>
+
                 <button type="submit" className="form-button">
                     Login
                 </button>
             </form>
-            <p>
-                No account yet? <Link to="/register">Register here</Link> first
-            </p>
-        </article>
+
+            <article>
+                <p>
+                    No account yet? <Link to="/register">Register here</Link>{" "}
+                    first
+                </p>
+            </article>
+        </main>
     );
 }
 

@@ -63,13 +63,14 @@ function Home() {
                 console.error(e);
             }
         }
+
         fetchRecipes();
     }, []);
 
     return (
-        <>
-            <section className="background-image row-container-top yellow-background">
-                <div>
+        <main>
+            <header className="background-image row-container-top yellow-background">
+                <section>
                     <h1>VanVeg</h1>
                     <p className="intro-text">
                         VanVeg is the vegan Hot spot online. Our mouth-watering,
@@ -81,13 +82,12 @@ function Home() {
                         buttonText="Find recipes"
                         onClick={() => history.push("/recipe-searchbar")}
                     />
-                </div>
-            </section>
-            <section>
-                <h2 className="row-container">Today's top recipes</h2>
-            </section>
+                </section>
+            </header>
+
             <section className="recipe-card-container">
-                <aside className="recipe-card-subcontainer">
+                <h2 className="row-container">Today's top recipes</h2>
+                <article className="recipe-card-subcontainer">
                     {recipes.slice(0, 9).map((recipe, index) => {
                         return (
                             <RecipeCardWithImage
@@ -104,9 +104,9 @@ function Home() {
                             />
                         );
                     })}
-                </aside>
+                </article>
             </section>
-        </>
+        </main>
     );
 }
 
