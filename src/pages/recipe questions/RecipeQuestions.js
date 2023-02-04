@@ -4,6 +4,7 @@ import Button from "../../components/Button";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import RecipeCardOnlyText from "../../components/RecipeCardOnlyText";
+import Footer from "../../components/Footer";
 
 function RecipeQuestions() {
     const [selectedOption, setSelectedOption] = useState({
@@ -73,104 +74,120 @@ function RecipeQuestions() {
     // React form hooks librray & Formik
 
     return (
-        <main>
-            <header
-                className={
-                    id
-                        ? "row-container-top green-background"
-                        : "full-screen green-background"
-                }
-            >
-                <h2>Find all the ingredients for your perfect recipe</h2>
+        <>
+            <main>
+                <header
+                    className={
+                        id
+                            ? "row-container-top green-background"
+                            : "full-screen green-background"
+                    }
+                >
+                    <h2>Find all the ingredients for your perfect recipe</h2>
 
-                <form className="form-question-list">
-                    <span className="form-text">
-                        The recipe I'd like to make is for{" "}
-                    </span>
-                    <select
-                        className="form-dropdown-option"
-                        id="questionType"
-                        value={selectedOption.mealType}
-                        onChange={handleClick("mealType")}
-                    >
-                        <option value=""></option>
-                        <option value="Breakfast">breakfast</option>
-                        <option value="Lunch">lunch</option>
-                        <option value="Dinner">dinner</option>
-                        <option value="Teatime">tea or snack time</option>
-                        <option value="Cocktailparty">a cocktail party!</option>
-                    </select>
+                    <form className="form-question-list">
+                        <span className="form-text">
+                            The recipe I'd like to make is for{" "}
+                        </span>
+                        <select
+                            className="form-dropdown-option"
+                            id="questionType"
+                            value={selectedOption.mealType}
+                            onChange={handleClick("mealType")}
+                        >
+                            <option value=""></option>
+                            <option value="Breakfast">breakfast</option>
+                            <option value="Lunch">lunch</option>
+                            <option value="Dinner">dinner</option>
+                            <option value="Teatime">tea or snack time</option>
+                            <option value="Cocktailparty">
+                                a cocktail party!
+                            </option>
+                        </select>
 
-                    <span className="form-text">
-                        {" "}
-                        . My cooking session preferably takes{" "}
-                    </span>
-                    <select
-                        className="form-dropdown-option"
-                        id="questionTime"
-                        value={selectedOption.time}
-                        onChange={handleClick("time")}
-                    >
-                        <option value="none"></option>
-                        <option value="60%2B">
-                            lots of time, I love long cooking sessions!
-                        </option>
-                        <option value="30-60">30 minutes to one hour</option>
-                        <option value="30">as little time as possible</option>
-                    </select>
+                        <span className="form-text">
+                            {" "}
+                            . My cooking session preferably takes{" "}
+                        </span>
+                        <select
+                            className="form-dropdown-option"
+                            id="questionTime"
+                            value={selectedOption.time}
+                            onChange={handleClick("time")}
+                        >
+                            <option value="none"></option>
+                            <option value="60%2B">
+                                lots of time, I love long cooking sessions!
+                            </option>
+                            <option value="30-60">
+                                30 minutes to one hour
+                            </option>
+                            <option value="30">
+                                as little time as possible
+                            </option>
+                        </select>
 
-                    <span className="form-text"> . And I'd love to cook</span>
-                    <select
-                        className="form-dropdown-menu"
-                        id="questionCuisine"
-                        value={selectedOption.cuisineType}
-                        onChange={handleClick("cuisineType")}
-                    >
-                        <option value=""></option>
-                        <option value="">any type of</option>
-                        <option value="American">American</option>
-                        <option value="Asian">Asian</option>
-                        <option value="SouthAmerican">South American</option>
-                        <option value="European">European</option>
-                    </select>
+                        <span className="form-text">
+                            {" "}
+                            . And I'd love to cook
+                        </span>
+                        <select
+                            className="form-dropdown-menu"
+                            id="questionCuisine"
+                            value={selectedOption.cuisineType}
+                            onChange={handleClick("cuisineType")}
+                        >
+                            <option value=""></option>
+                            <option value="">any type of</option>
+                            <option value="American">American</option>
+                            <option value="Asian">Asian</option>
+                            <option value="SouthAmerican">
+                                South American
+                            </option>
+                            <option value="European">European</option>
+                        </select>
 
-                    <span className="form-text"> cuisine. Diets? </span>
-                    <select
-                        className="form-dropdown-menu"
-                        id="questionDiets"
-                        value={selectedOption.health}
-                        onChange={handleClick("health")}
-                    >
-                        <option value=""></option>
-                        <option value="">No diets, show me everything!</option>
-                        <option value="wheat-free">wheat-free</option>
-                        <option value="tree-and-nut">nut-free</option>
-                        <option value="fodmap-free">FODMAP</option>
-                    </select>
+                        <span className="form-text"> cuisine. Diets? </span>
+                        <select
+                            className="form-dropdown-menu"
+                            id="questionDiets"
+                            value={selectedOption.health}
+                            onChange={handleClick("health")}
+                        >
+                            <option value=""></option>
+                            <option value="">
+                                No diets, show me everything!
+                            </option>
+                            <option value="wheat-free">wheat-free</option>
+                            <option value="tree-and-nut">nut-free</option>
+                            <option value="fodmap-free">FODMAP</option>
+                        </select>
 
-                    <div className="form-center">
-                        <Button
-                            type="button"
-                            onClick={getRecipes}
-                            buttonText="Open the cookbook"
-                        />
-                    </div>
-                </form>
-            </header>
+                        <div className="form-center">
+                            <Button
+                                type="button"
+                                onClick={getRecipes}
+                                buttonText="Open the cookbook"
+                            />
+                        </div>
+                    </form>
+                </header>
 
-            <article className="recipe-container">
-                {recipes.map((recipe) => {
-                    return (
-                        <RecipeCardOnlyText
-                            recipeId={() => history.push(`/recipe/${id}`)}
-                            recipeTitle={recipe.recipe.label}
-                            recipeDishType={recipe.recipe.dishType}
-                            totalTime={recipe.recipe.totalTime}
-                        />
-                    );
-                })}
-            </article>
-        </main>
+                <article className="recipe-container">
+                    {recipes.map((recipe) => {
+                        return (
+                            <RecipeCardOnlyText
+                                recipeId={() => history.push(`/recipe/${id}`)}
+                                recipeTitle={recipe.recipe.label}
+                                recipeDishType={recipe.recipe.dishType}
+                                totalTime={recipe.recipe.totalTime}
+                            />
+                        );
+                    })}
+                </article>
+            </main>
+            <Footer />
+        </>
     );
 }
 

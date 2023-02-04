@@ -1,8 +1,9 @@
 import "./RecipeSearcher.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import RecipeCardOnlyText from "../../components/RecipeCardOnlyText";
+import Footer from "../../components/Footer";
 
 function RecipeSearcher() {
     const [searchValue, setSearchValue] = useState("");
@@ -46,52 +47,55 @@ function RecipeSearcher() {
     }
 
     return (
-        <main>
-            <header
-                className={
-                    query
-                        ? "row-container-top champagne-background"
-                        : "full-screen champagne-background"
-                }
-            >
-                <section>
-                    <h2>Find your recipe</h2>
-                    <p>Search your favorites</p>
-                </section>
-
-                <form
-                    className="search-container"
-                    type="submit"
-                    onSubmit={handleSubmit}
+        <>
+            <main>
+                <header
+                    className={
+                        query
+                            ? "row-container-top champagne-background"
+                            : "full-screen champagne-background"
+                    }
                 >
-                    <label htmlFor="form-input" className="search-item">
-                        Yum... You're almost there:
-                        <input
-                            type="text"
-                            id="form-input"
-                            name="input-search"
-                            value={searchValue}
-                            placeholder="Type here"
-                            className="search-bar"
-                            onChange={(e) => setSearchValue(e.target.value)}
-                        />
-                    </label>
-                </form>
-            </header>
+                    <section>
+                        <h2>Find your recipe</h2>
+                        <p>Search your favorites</p>
+                    </section>
 
-            <article className="recipe-container">
-                {recipes.map((recipe) => {
-                    return (
-                        <RecipeCardOnlyText
-                            recipeId={() => history.push(`/recipe/${id}`)}
-                            recipeTitle={recipe.recipe.label}
-                            recipeDishType={recipe.recipe.dishType}
-                            totalTime={recipe.recipe.totalTime}
-                        />
-                    );
-                })}
-            </article>
-        </main>
+                    <form
+                        className="search-container"
+                        type="submit"
+                        onSubmit={handleSubmit}
+                    >
+                        <label htmlFor="form-input" className="search-item">
+                            Yum... You're almost there:
+                            <input
+                                type="text"
+                                id="form-input"
+                                name="input-search"
+                                value={searchValue}
+                                placeholder="Type here"
+                                className="search-bar"
+                                onChange={(e) => setSearchValue(e.target.value)}
+                            />
+                        </label>
+                    </form>
+                </header>
+
+                <article className="recipe-container">
+                    {recipes.map((recipe) => {
+                        return (
+                            <RecipeCardOnlyText
+                                recipeId={() => history.push(`/recipe/${id}`)}
+                                recipeTitle={recipe.recipe.label}
+                                recipeDishType={recipe.recipe.dishType}
+                                totalTime={recipe.recipe.totalTime}
+                            />
+                        );
+                    })}
+                </article>
+            </main>
+            <Footer />
+        </>
     );
 }
 

@@ -1,0 +1,21 @@
+.blue-background {
+    background-color: rgba(116, 211, 174, 0.3);
+}
+
+.footer-margin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.footer-text {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    font-size: 12px;
+    padding: 0;
+}
+
+.bold {
+    font-weight: bold;
+}

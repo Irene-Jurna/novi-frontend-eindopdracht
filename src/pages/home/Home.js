@@ -4,6 +4,7 @@ import axios from "axios";
 import Button from "../../components/Button";
 import { useHistory } from "react-router-dom";
 import RecipeCardWithImage from "../../components/RecipeCardWithImage";
+import Footer from "../../components/Footer";
 
 function Home() {
     const [recipes, setRecipes] = useState([]);
@@ -68,45 +69,51 @@ function Home() {
     }, []);
 
     return (
-        <main>
-            <header className="background-image row-container-top yellow-background">
-                <section>
-                    <h1>VanVeg</h1>
-                    <p className="intro-text">
-                        VanVeg is the vegan Hot spot online. Our mouth-watering,
-                        traditional curries from all over the world, healthy
-                        snacks and heavenly sweets will have you.
-                    </p>
-                    <Button
-                        type="text"
-                        buttonText="Find recipes"
-                        onClick={() => history.push("/recipe-searchbar")}
-                    />
-                </section>
-            </header>
+        <>
+            <main>
+                <header className="background-image row-container-top yellow-background">
+                    <section>
+                        <h1>VanVeg</h1>
+                        <p className="intro-text">
+                            VanVeg is the vegan Hot spot online. Our
+                            mouth-watering, traditional curries from all over
+                            the world, healthy snacks and heavenly sweets will
+                            have you.
+                        </p>
+                        <Button
+                            type="text"
+                            buttonText="Find recipes"
+                            onClick={() => history.push("/recipe-searchbar")}
+                        />
+                    </section>
+                </header>
 
-            <section className="recipe-card-container">
-                <h2 className="row-container">Today's top recipes</h2>
-                <article className="recipe-card-subcontainer">
-                    {recipes.slice(0, 9).map((recipe, index) => {
-                        return (
-                            <RecipeCardWithImage
-                                recipeTitle={recipe.recipe.label}
-                                recipeId={() =>
-                                    history.push(
-                                        `/recipe/${recipe.recipe.label}`
-                                    )
-                                }
-                                imageSource={require(`../../assets/${veggieImages[index].image}.png`)}
-                                imageKey={veggieImages[index].title}
-                                recipeDishType={recipe.recipe.dishType}
-                                recipeCuisineType={recipe.recipe.cuisineType}
-                            />
-                        );
-                    })}
-                </article>
-            </section>
-        </main>
+                <section className="recipe-card-container">
+                    <h2 className="row-container">Today's top recipes</h2>
+                    <article className="recipe-card-subcontainer">
+                        {recipes.slice(0, 9).map((recipe, index) => {
+                            return (
+                                <RecipeCardWithImage
+                                    recipeTitle={recipe.recipe.label}
+                                    recipeId={() =>
+                                        history.push(
+                                            `/recipe/${recipe.recipe.label}`
+                                        )
+                                    }
+                                    imageSource={require(`../../assets/${veggieImages[index].image}.png`)}
+                                    imageKey={veggieImages[index].title}
+                                    recipeDishType={recipe.recipe.dishType}
+                                    recipeCuisineType={
+                                        recipe.recipe.cuisineType
+                                    }
+                                />
+                            );
+                        })}
+                    </article>
+                </section>
+            </main>
+            {recipes && <Footer />}
+        </>
     );
 }
 
