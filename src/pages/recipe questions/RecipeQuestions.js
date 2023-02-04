@@ -56,12 +56,14 @@ function RecipeQuestions() {
             const response = await axios.get(
                 `https://api.edamam.com/api/recipes/v2?type=public&app_id=${edamameId}&app_key=${edamameKey}&health=vegan&${objectToString}`
             );
+
             setRecipes(response.data.hits);
             const findId = response.data.hits[0].recipe.uri.lastIndexOf("_");
             const findCompleteId = response.data.hits[0].recipe.uri.slice(
                 findId + 1
             );
             setId(findCompleteId);
+
             console.log(response.data.hits[0].recipe.uri);
         } catch (e) {
             console.error(e);
@@ -73,7 +75,13 @@ function RecipeQuestions() {
 
     return (
         <>
-            <section className="full-screen green-background">
+            <section
+                className={
+                    id
+                        ? "row-container-top green-background"
+                        : "full-screen green-background"
+                }
+            >
                 <h2>Find all the ingredients for your perfect recipe</h2>
                 <form className="form-question-list">
                     <span className="form-text">

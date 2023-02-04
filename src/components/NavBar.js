@@ -52,19 +52,18 @@ function NavBar() {
                         Recipe searchbar
                     </NavLink>
                 </li>
-                {/*Deze code is uitgecommentarieerd, omdat de pagina nog niet af is (maar wel bijna). Ik heb het laten staan, zodat de code snel weer aangezet kan worden op het moment dat de pagina volledig werkt*/}
-                {/*<li>*/}
-                {/*    <NavLink*/}
-                {/*        to="/recipe-questions"*/}
-                {/*        className={({ isActive }) =>*/}
-                {/*            isActive*/}
-                {/*                ? styles["active-link"]*/}
-                {/*                : styles["default-link"]*/}
-                {/*        }*/}
-                {/*    >*/}
-                {/*        Recipe questions*/}
-                {/*    </NavLink>*/}
-                {/*</li>*/}
+                <li>
+                    <NavLink
+                        to="/recipe-questions"
+                        className={({ isActive }) =>
+                            isActive
+                                ? styles["active-link"]
+                                : styles["default-link"]
+                        }
+                    >
+                        Recipe questions
+                    </NavLink>
+                </li>
             </ul>
             <div className="navbar-buttons">
                 {isAuth ? (
