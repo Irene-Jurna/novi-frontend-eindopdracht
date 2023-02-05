@@ -36,40 +36,19 @@ function NavBar() {
             </figure>
             <ul className="navbar-links">
                 <li>
-                    <Link
-                        to="/"
-                        className={({ isActive }) =>
-                            isActive
-                                ? styles["active-link"]
-                                : styles["default-link"]
-                        }
-                    >
+                    <Link to="/" className="navbar-tag">
                         {" "}
                         Home{" "}
                     </Link>
                 </li>
                 <li>
-                    <Link
-                        to="/recipe-searchbar"
-                        className={({ isActive }) =>
-                            isActive
-                                ? styles["active-link"]
-                                : styles["default-link"]
-                        }
-                    >
+                    <Link to="/recipe-searchbar" className="navbar-tag">
                         {" "}
                         Recipe searchbar{" "}
                     </Link>
                 </li>
                 <li>
-                    <Link
-                        to="/recipe-questions"
-                        className={({ isActive }) =>
-                            isActive
-                                ? styles["active-link"]
-                                : styles["default-link"]
-                        }
-                    >
+                    <Link to="/recipe-questions" className="navbar-tag">
                         {" "}
                         Recipe questions{" "}
                     </Link>
