@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import logo from "../assets/logo.png";
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import styles from "./NavBar.css";
 import { AuthContext } from "../context/AuthContext";
 
@@ -22,10 +22,17 @@ function NavBar() {
     return (
         <nav className={navbar ? "navbar-container" : "navbar-onscroll"}>
             <article className="navbar-logo">
-                <NavLink to="/" classname="home-button">
-                    <a href="" className="logo-img"></a>
-                    <img src={logo} alt="VanVeg logo" className="logo-img" />
-                </NavLink>
+                <ul className="navbar-links">
+                    <li>
+                        <Link to="/ className=nav-logo">
+                            <img
+                                src={logo}
+                                alt="VanVeg logo"
+                                className="logo-img"
+                            />
+                        </Link>
+                    </li>
+                </ul>
             </article>
             <ul className="navbar-links">
                 <li>
@@ -65,6 +72,7 @@ function NavBar() {
                     </NavLink>
                 </li>
             </ul>
+
             <div className="navbar-buttons">
                 {isAuth ? (
                     <div>
