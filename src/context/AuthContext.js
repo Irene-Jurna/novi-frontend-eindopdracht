@@ -9,7 +9,6 @@ function AuthContextProvider({ children }) {
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
         user: null,
-        // Deze moet op pending
         status: "pending",
     });
     const history = useHistory();

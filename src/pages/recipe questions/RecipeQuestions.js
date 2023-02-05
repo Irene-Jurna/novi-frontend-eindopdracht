@@ -18,9 +18,6 @@ function RecipeQuestions() {
     const [id, setId] = useState("");
     const history = useHistory();
 
-    const edamameId = "4e1e2f8f";
-    const edamameKey = "324092c9d55a77b05f596a354fa9d42f";
-
     //useCallBack voert functie uit. UseMemo slaat dingen op
     const handleClick = useCallback(
         (key) =>
@@ -55,7 +52,7 @@ function RecipeQuestions() {
         console.log(objectToString);
         try {
             const response = await axios.get(
-                `https://api.edamam.com/api/recipes/v2?type=public&app_id=${edamameId}&app_key=${edamameKey}&health=vegan&${objectToString}`
+                `https://api.edamam.com/api/recipes/v2?type=public&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan&${objectToString}`
             );
             console.log(response.data.hits);
             setRecipes(response.data.hits);

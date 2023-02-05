@@ -8,8 +8,6 @@ import Footer from "../../components/Footer";
 
 function Home() {
     const [recipes, setRecipes] = useState([]);
-    const edamameId = "4e1e2f8f";
-    const edamameKey = "324092c9d55a77b05f596a354fa9d42f";
     const history = useHistory();
 
     const veggieImages = [
@@ -56,7 +54,7 @@ function Home() {
         async function fetchRecipes() {
             try {
                 const result = await axios.get(
-                    `https://api.edamam.com/api/recipes/v2?type=public&q=q&app_id=${edamameId}&app_key=${edamameKey}&health=vegan&random=true`
+                    `https://api.edamam.com/api/recipes/v2?type=public&q=q&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan&random=true`
                 );
                 console.log(result.data.hits);
                 setRecipes(result.data.hits);

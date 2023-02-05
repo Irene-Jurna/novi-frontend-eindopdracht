@@ -12,14 +12,11 @@ function RecipeSearcher() {
     const [id, setId] = useState("");
     const history = useHistory();
 
-    const edamameId = "4e1e2f8f";
-    const edamameKey = "324092c9d55a77b05f596a354fa9d42f";
-
     useEffect(() => {
         async function fetchRecipes() {
             try {
                 const response = await axios.get(
-                    `https://api.edamam.com/api/recipes/v2?type=public&q=${searchValue}&app_id=${edamameId}&app_key=${edamameKey}&health=vegan&random=true`
+                    `https://api.edamam.com/api/recipes/v2?type=public&q=${searchValue}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan&random=true`
                 );
                 console.log(response.data.hits);
                 setRecipes(response.data.hits);
