@@ -1,4 +1,5 @@
 import React from "react";
+import "./RecipeInfoCard.css";
 
 function RecipeInfoCard({
     recipeDishType,
@@ -7,12 +8,14 @@ function RecipeInfoCard({
     imageAlt,
 }) {
     return (
-        <>
-            <p>
+        <article>
+            <figcaption className="font-figcaption-recipe-info-card">
                 {recipeDishType} | {recipeCuisineType}
-            </p>
-            <img src={imageSource} alt={imageAlt} />
-        </>
+            </figcaption>
+            <figure>
+                <img src={imageSource} alt={imageAlt} />
+            </figure>
+        </article>
     );
 }
 

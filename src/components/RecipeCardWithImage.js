@@ -11,24 +11,24 @@ function RecipeCardWithImage({
     recipeCuisineType,
 }) {
     return (
-        <article className="recipe-card-item recipe-list" key={recipeTitle}>
+        <section className="recipe-card-item recipe-list" key={recipeTitle}>
             <ul className="recipe-url" onClick={recipeId}>
-                <div className="recipe-card-image">
+                <figure className="recipe-card-image">
                     <img
                         className="fruit-img"
                         src={imageSource}
                         alt={imageAlt}
                         key={imageKey}
                     />
-                </div>
-                <div className="recipe-card-text">
+                </figure>
+                <figcaption className="recipe-card-text">
                     <h3>{recipeTitle}</h3>
                     <p className="text-specifications">
                         {recipeDishType} - {recipeCuisineType}
                     </p>
-                </div>
+                </figcaption>
             </ul>
-        </article>
+        </section>
     );
 }
 

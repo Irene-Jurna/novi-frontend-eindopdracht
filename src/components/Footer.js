@@ -1,7 +1,7 @@
 import React from "react";
 import "./Footer.css";
 
-function Footer({}) {
+function Footer() {
     return (
         <footer className="blue-background item-centered">
             <article className="footer-margin">

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import logo from "../assets/logo.png";
 import { Link, useHistory } from "react-router-dom";
-import styles from "./NavBar.css";
 import { AuthContext } from "../context/AuthContext";
+import "./NavBar.css";
 
 function NavBar() {
     const history = useHistory();
@@ -54,10 +54,9 @@ function NavBar() {
                     </Link>
                 </li>
             </ul>
-
-            <div className="navbar-buttons">
+            <span className="navbar-buttons">
                 {isAuth ? (
-                    <div>
+                    <article>
                         <button
                             type="button"
                             className="navbar-button"
@@ -72,9 +71,9 @@ function NavBar() {
                         >
                             Logout
                         </button>
-                    </div>
+                    </article>
                 ) : (
-                    <div>
+                    <article>
                         <button
                             type="button"
                             className="navbar-button"
@@ -89,9 +88,9 @@ function NavBar() {
                         >
                             Register
                         </button>
-                    </div>
+                    </article>
                 )}
-            </div>
+            </span>
         </nav>
     );
 }
