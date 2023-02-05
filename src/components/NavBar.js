@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import logo from "../assets/logo.png";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styles from "./NavBar.css";
 import { AuthContext } from "../context/AuthContext";
 
@@ -21,7 +21,7 @@ function NavBar() {
 
     return (
         <nav className={navbar ? "navbar-container" : "navbar-onscroll"}>
-            <article className="navbar-logo">
+            <figure className="navbar-logo">
                 <ul className="navbar-links">
                     <li>
                         <Link to="/ className=nav-logo">
@@ -33,10 +33,10 @@ function NavBar() {
                         </Link>
                     </li>
                 </ul>
-            </article>
+            </figure>
             <ul className="navbar-links">
                 <li>
-                    <NavLink
+                    <Link
                         to="/"
                         className={({ isActive }) =>
                             isActive
@@ -44,11 +44,12 @@ function NavBar() {
                                 : styles["default-link"]
                         }
                     >
-                        Home
-                    </NavLink>
+                        {" "}
+                        Home{" "}
+                    </Link>
                 </li>
                 <li>
-                    <NavLink
+                    <Link
                         to="/recipe-searchbar"
                         className={({ isActive }) =>
                             isActive
@@ -56,11 +57,12 @@ function NavBar() {
                                 : styles["default-link"]
                         }
                     >
-                        Recipe searchbar
-                    </NavLink>
+                        {" "}
+                        Recipe searchbar{" "}
+                    </Link>
                 </li>
                 <li>
-                    <NavLink
+                    <Link
                         to="/recipe-questions"
                         className={({ isActive }) =>
                             isActive
@@ -68,8 +70,9 @@ function NavBar() {
                                 : styles["default-link"]
                         }
                     >
-                        Recipe questions
-                    </NavLink>
+                        {" "}
+                        Recipe questions{" "}
+                    </Link>
                 </li>
             </ul>
 
