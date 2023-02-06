@@ -3,11 +3,7 @@ import styles from "./Button.module.css";
 
 function Button({ type, buttonText, onClick }) {
     return (
-        <button
-            type={type}
-            className={styles["button-component"]}
-            onClick={onClick}
-        >
+        <button type={type} className={styles["btn"]} onClick={onClick}>
             {buttonText}
         </button>
     );
