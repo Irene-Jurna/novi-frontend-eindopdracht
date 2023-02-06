@@ -1,5 +1,4 @@
-/* --------------- 4.1 Navbar ------------------------- */
-.navbar-container {
+.navbar {
     display: flex;
     width: 100%;
     position: fixed;
@@ -7,12 +6,7 @@
     justify-content: space-around;
 }
 
-.navbar-buttons {
-    display: flex;
-    align-items: center;
-}
-
-.navbar-onscroll {
+.navbar--onscroll {
     display: flex;
     width: 100%;
     background-color: white;
@@ -23,18 +17,47 @@
     flex: 1 1 auto;
 }
 
-.navbar-links {
-    list-style: none;
-    font-family: 'Encode Sans Condensed', sans-serif;
+.navbar__logo {
+    display: flex;
 }
 
-.navbar-links > li {
+.navbar__link{
+    list-style: none;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.navbar__link-padding{
     padding: 0 10px;
 }
 
-.navbar-logo {
+.navbar__button-container {
     display: flex;
+    align-items: center;
 }
+
+.navbar__button {
+    border-radius: 4px;
+    border: none;
+    padding: 8px 16px;
+    background-color: #678D58;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar__button + .navbar__button {
+    margin-left: 8px;
+}
+
+.navbar__button:hover {
+    cursor: pointer;
+}
+
+/*.navbar-links > li {*/
+/*    padding: 0 10px;*/
+/*}*/
 
 nav a,
 nav a:visited {
@@ -53,21 +76,4 @@ nav a:hover {
 
 .default-link {
     text-decoration: none;
-}
-
-.navbar-button {
-    border-radius: 4px;
-    border: none;
-    padding: 8px 16px;
-    background-color: #678D58;
-    color: white;
-    font-weight: bold;
-}
-
-.navbar-button:hover {
-    cursor: pointer;
-}
-
-.navbar-button + .navbar-button {
-    margin-left: 8px;
 }

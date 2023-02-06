@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import logo from "../assets/logo.png";
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import "./NavBar.css";
+import styles from "./NavBar.module.css";
 
 function NavBar() {
     const history = useHistory();
@@ -20,9 +20,9 @@ function NavBar() {
     window.addEventListener("scroll", changeNavbar);
 
     return (
-        <nav className={navbar ? "navbar-container" : "navbar-onscroll"}>
-            <figure className="navbar-logo">
-                <ul className="navbar-links">
+        <nav className={navbar ? styles.navbar : styles["navbar--onscroll"]}>
+            <figure className={styles.navbar__logo}>
+                <ul className={styles.navbar__link}>
                     <li>
                         <Link to="/ className=nav-logo">
                             <img
@@ -34,8 +34,8 @@ function NavBar() {
                     </li>
                 </ul>
             </figure>
-            <ul className="navbar-links">
-                <li>
+            <ul className={styles.navbar__link}>
+                <li className={styles["styles.navbar__link-padding"]}>
                     <Link to="/" className="navbar-tag">
                         {" "}
                         Home{" "}
@@ -54,19 +54,19 @@ function NavBar() {
                     </Link>
                 </li>
             </ul>
-            <span className="navbar-buttons">
+            <span className={styles["navbar__button-container"]}>
                 {isAuth ? (
                     <article>
                         <button
                             type="button"
-                            className="navbar-button"
+                            className={styles.navbar__button}
                             onClick={() => history.push("/profile")}
                         >
                             Profile
                         </button>
                         <button
                             type="button"
-                            className="navbar-button"
+                            className={styles.navbar__button}
                             onClick={logout}
                         >
                             Logout
@@ -76,14 +76,14 @@ function NavBar() {
                     <article>
                         <button
                             type="button"
-                            className="navbar-button"
+                            className={styles.navbar__button}
                             onClick={() => history.push("/login")}
                         >
                             Login
                         </button>
                         <button
                             type="button"
-                            className="navbar-button"
+                            className={styles.navbar__button}
                             onClick={() => history.push("/register")}
                         >
                             Register

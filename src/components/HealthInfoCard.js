@@ -1,9 +1,9 @@
 import React from "react";
-import "./HealthInfoCard.css";
+import styles from "./HealthInfoCard.module.css";
 
 function HealthInfoCard({ healthInformation }) {
     return (
-        <ul className="health-list recipe-item">
+        <ul className={styles["health-label"]}>
             <li key={healthInformation}>{healthInformation}</li>
         </ul>
     );
