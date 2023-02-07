@@ -1,5 +1,5 @@
 import React from "react";
-import "./RecipeCardOnlyText.css";
+import styles from "./RecipeCardOnlyText.module.css";
 
 function RecipeCardOnlyText({
     recipeId,
@@ -9,15 +9,17 @@ function RecipeCardOnlyText({
     totalTime,
 }) {
     return (
-        <article className="recipe-list" key={recipeTitle}>
-            <ul className="recipe-ul" onClick={recipeId}>
-                <li className="recipe-item">
+        <article key={recipeTitle}>
+            <ul onClick={recipeId}>
+                <li className={styles["recipe__item"]}>
                     {recipeTitle}
-                    <p className="text-recipe-info">
+                    <p className={styles["recipe__text-info"]}>
                         {recipeDishType}
                         {recipeCuisineType}
                     </p>
-                    <p className="text-minutes">Ready in {totalTime} minutes</p>
+                    <p className={styles["recipe__text-time"]}>
+                        Ready in {totalTime} minutes
+                    </p>
                 </li>
             </ul>
         </article>

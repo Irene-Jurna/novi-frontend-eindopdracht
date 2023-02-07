@@ -1,5 +1,5 @@
 import React from "react";
-import "./RecipeCardWithImage.css";
+import styles from "./RecipeCardWithImage.module.css";
 
 function RecipeCardWithImage({
     recipeTitle,
@@ -11,19 +11,19 @@ function RecipeCardWithImage({
     recipeCuisineType,
 }) {
     return (
-        <section className="recipe-card-item recipe-list" key={recipeTitle}>
+        <section className={styles["recipe-card"]} key={recipeTitle}>
             <ul className="recipe-url" onClick={recipeId}>
-                <figure className="recipe-card-image">
+                <figure>
                     <img
-                        className="fruit-img"
+                        className={styles["recipe-card__fruit-img"]}
                         src={imageSource}
                         alt={imageAlt}
                         key={imageKey}
                     />
                 </figure>
-                <figcaption className="recipe-card-text">
+                <figcaption className={styles["recipe-card__text"]}>
                     <h3>{recipeTitle}</h3>
-                    <p className="text-specifications">
+                    <p className="recipe-card__text-specifications">
                         {recipeDishType} - {recipeCuisineType}
                     </p>
                 </figcaption>
