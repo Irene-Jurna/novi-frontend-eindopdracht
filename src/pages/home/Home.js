@@ -8,6 +8,7 @@ import Footer from "../../components/Footer";
 
 function Home() {
     const [recipes, setRecipes] = useState([]);
+    const [id, setId] = useState("");
     const history = useHistory();
 
     const veggieImages = [
@@ -58,6 +59,12 @@ function Home() {
                 );
                 console.log(result.data.hits);
                 setRecipes(result.data.hits);
+                const findId = result.data.hits[0].recipe.uri.lastIndexOf("_");
+                const findCompleteId = result.data.hits[0].recipe.uri.slice(
+                    findId + 1
+                );
+                setId(findCompleteId);
+                console.log(result.data.hits[0].recipe.uri);
             } catch (e) {
                 console.error(e);
             }
@@ -94,9 +101,7 @@ function Home() {
                                 <RecipeCardWithImage
                                     recipeTitle={recipe.recipe.label}
                                     recipeId={() =>
-                                        history.push(
-                                            `/recipe/${recipe.recipe.label}`
-                                        )
+                                        history.push(`/recipe/${id}`)
                                     }
                                     imageSource={require(`../../assets/${veggieImages[index].image}.png`)}
                                     imageKey={veggieImages[index].title}

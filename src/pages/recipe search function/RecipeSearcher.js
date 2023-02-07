@@ -16,7 +16,7 @@ function RecipeSearcher() {
         async function fetchRecipes() {
             try {
                 const response = await axios.get(
-                    `https://api.edamam.com/api/recipes/v2?type=public&q=${searchValue}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan&random=true`
+                    `https://api.edamam.com/api/recipes/v2?type=public&q=${searchValue}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan`
                 );
                 console.log(response.data.hits);
                 setRecipes(response.data.hits);

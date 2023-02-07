@@ -24,7 +24,7 @@ function NavBar() {
             <figure className={styles.navbar__logo}>
                 <ul className={styles.navbar__link}>
                     <li>
-                        <Link to="/ className=nav-logo">
+                        <Link to="/" className="nav-logo">
                             <img
                                 src={logo}
                                 alt="VanVeg logo"
