@@ -115,7 +115,7 @@ function Home() {
                                 />
                             );
                         })}
-                        {loading && <p>Preparing ingredients (loading...)</p>}
+                        {loading && <p>Preparing ingredients(...loading)</p>}
                     </article>
                 </section>
             </main>
