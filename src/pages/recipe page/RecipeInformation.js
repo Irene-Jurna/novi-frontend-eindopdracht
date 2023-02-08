@@ -9,13 +9,21 @@ import RecipeInfoCard from "../../components/RecipeInfoCard";
 function RecipeInformation() {
     const { id } = useParams();
     const [recipeInformations, setRecipeInformations] = useState("");
+    const controller = new AbortController();
 
     console.log(id);
     useEffect(() => {
+        // Nieuw
+        const loop = setInterval(() => {
+            console.log("loading...");
+        }, 1000);
         async function fetchRecipeData() {
             try {
                 const result = await axios.get(
-                    `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}`
+                    `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}`,
+                    {
+                        signal: controller.signal,
+                    }
                 );
                 console.log(result.data.recipe);
                 setRecipeInformations(result.data.recipe);
@@ -23,9 +31,13 @@ function RecipeInformation() {
                 console.error(e);
             }
         }
-
         fetchRecipeData();
-    }, []);
+        // nieuw
+        return function cleanup() {
+            console.log("Het interval wordt gestopt!");
+            clearInterval(loop);
+        };
+    }, [controller.signal, id]);
 
     return (
         <main>
