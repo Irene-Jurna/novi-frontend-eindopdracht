@@ -9,6 +9,7 @@ import Footer from "../../components/Footer";
 function Home() {
     const [recipes, setRecipes] = useState([]);
     const [id, setId] = useState("");
+    const [loading, toggleLoading] = useState(false);
     const history = useHistory();
 
     const veggieImages = [
@@ -53,6 +54,7 @@ function Home() {
 
     useEffect(() => {
         async function fetchRecipes() {
+            toggleLoading(true);
             try {
                 const result = await axios.get(
                     `https://api.edamam.com/api/recipes/v2?type=public&q=q&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan&random=true`
@@ -68,6 +70,7 @@ function Home() {
             } catch (e) {
                 console.error(e);
             }
+            toggleLoading(false);
         }
 
         fetchRecipes();
@@ -112,6 +115,7 @@ function Home() {
                                 />
                             );
                         })}
+                        {loading && <p>Preparing ingredients (loading...)</p>}
                     </article>
                 </section>
             </main>
