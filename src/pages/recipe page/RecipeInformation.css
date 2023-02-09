@@ -1,0 +1,49 @@
+/* ------------------------------- 4. Areas ---------------------------------------- */
+
+/* --------------- 4.1 All elements from the page RecipeInformation ------------------- */
+
+.information-container {
+    height: 100%;
+    width: 100%;
+}
+
+.information-list {
+    position: relative;
+    list-style: none;
+}
+
+.first ~ li {
+    color: #A6C48A;
+}
+
+.health-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+img {
+    padding-bottom: 20px;
+}
+
+.recipe-section-title {
+    display: flex;
+    justify-content: center;
+    padding-top: 70px;
+}
+
+/* ------------------------------- 5. Media Queries -------------------------------- */
+
+@media screen and (max-width: 576px) {
+    .recipe-title {
+        font-size: 32px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .info-border {
+        border: solid #A6C48A;
+        padding: 25px 125px;
+        margin: 0 10vw;
+    }
+}
+

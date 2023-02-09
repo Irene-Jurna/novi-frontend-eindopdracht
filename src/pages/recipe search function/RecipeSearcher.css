@@ -1,0 +1,59 @@
+/* ------------------------------- 1. Areas ---------------------------------------- */
+
+/* --------------- 1.1 Search panel ------------------------- */
+
+.search-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-bar {
+    padding: 7px 30px;
+    margin: 20px;
+    width: 250px;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    border-color: #F6E7CB;
+    border-style: outset;
+    cursor: pointer;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    text-align: center;
+}
+
+/* --------------- 1.2 Recipe cards ------------------- */
+
+.recipe-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+/* ------------------------------- 2. Media Queries -------------------------------- */
+
+@media screen and (min-width: 768px) {
+    .recipe-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .recipe-container {
+        margin: 0 5vw;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .recipe-container {
+        margin: 0 10vw;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .recipe-container {
+        margin: 0 17vw;
+    }
+}

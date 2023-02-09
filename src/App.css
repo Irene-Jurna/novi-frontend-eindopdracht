@@ -1,38 +1,198 @@
-.App {
-  text-align: center;
+/* ------------------------------- 1. Global Styles -------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.outer-container {
+    width: 100%;
+    display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo-img {
+    height: 50px;
+    width: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* ------------------------------- 2. Typography ----------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Signika:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Signika:wght@500&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Signika', sans-serif;
+    padding: 5px 0;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+    font-size: 48px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2 {
+    font-size: 32px;
+}
+
+p {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    font-size: 18px;
+    padding: 20px 0;
+}
+
+li {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    font-size: 16px;
+}
+
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+/* --------------- 3.1 Color palette  ----------------------- */
+
+/*Medium Aquamarine: #74D3AE;*/
+/*Russion Green:#678D58;*/
+/*Olivine: #A6C48A;*/
+/*Champagne: #F6E7CB;*/
+/*Green yellow Crayola: #FFE8B6;*/
+/*Dark Salmon: #DD9787;*/
+/*Jet (black for text): #292929;*/
+/*White: #FFFFFF; */
+
+.pink-background {
+    background-color: rgba(221, 151, 135, 0.3);
+}
+
+.yellow-background {
+    background-color: rgba(246, 245, 174, 0.5);
+}
+
+.champagne-background {
+    background-color: rgba(246, 231, 203, 0.5);
+}
+
+.green-background {
+    background-color: rgba(166, 196, 138, 0.5);
+}
+
+.blue-background {
+    background-color: rgba(116, 211, 174, 0.3);
+}
+
+/* --------------- 3.2 Reusables General --------------------------- */
+
+.row-container-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 100px;
+    flex-wrap: wrap;
+}
+
+.row-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 60px 100px 0;
+    flex-wrap: wrap;
+}
+
+.full-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 100vw;
+    padding: 250px 150px;
+}
+
+.item-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --------------- 3.2 Forms --------------------------- */
+
+.form-question-list {
+    max-width: 600px;
+    padding: 20px 0;
+}
+
+.form-text {
+    line-height: 34px;
+    font-size: 18px
+}
+
+.form-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-input {
+    /*Zie mediaquery*/
+}
+
+.form-button {
+    padding: 7px 30px;
+    margin: 20px 20px 20px 0;
+    width: 150px;
+    border-radius: 3px;
+    border-color: #A6C48A;
+    border-style: solid;
+    cursor: pointer;
+    font-family: 'Encode Sans Condensed', sans-serif;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --------------- 3.2 Other --------------------------- */
+
+.recipe-list {
+    cursor: pointer;
+}
+
+/* ------------------------------- 4. Media Queries -------------------------------- */
+
+@media screen and (max-width: 768px) {
+    .row-container-top {
+        padding: 180px 11vw;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .navbar-container {
+        padding: 20px 100px;
+        flex: 1 1 auto;
+    }
+
+    .navbar-links {
+        display: flex;
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 0;
+        justify-content: flex-end;
+        box-sizing: border-box;
+        align-items: center;
+    }
+
+    .form-input {
+        margin-left: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .row-container {
+        flex-wrap: nowrap;
+    }
+
+    .row-container-top {
+        padding: 180px 5vw;
+    }
 }
