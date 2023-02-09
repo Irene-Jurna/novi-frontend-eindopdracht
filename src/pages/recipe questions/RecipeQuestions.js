@@ -5,6 +5,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import RecipeCardOnlyText from "../../components/RecipeCardOnlyText";
 import Footer from "../../components/Footer";
+import Loader from "../../components/Loader";
 
 function RecipeQuestions() {
     const [selectedOption, setSelectedOption] = useState({
@@ -16,6 +17,7 @@ function RecipeQuestions() {
 
     const [recipes, setRecipes] = useState([]);
     const [id, setId] = useState("");
+    const [loading, toggleLoading] = useState(false);
     const history = useHistory();
 
     //useCallBack voert functie uit. UseMemo slaat dingen op
@@ -49,6 +51,7 @@ function RecipeQuestions() {
     );
 
     async function getRecipes() {
+        toggleLoading(true);
         console.log(objectToString);
         try {
             const response = await axios.get(
@@ -65,6 +68,7 @@ function RecipeQuestions() {
         } catch (e) {
             console.error(e);
         }
+        toggleLoading(false);
     }
 
     // Je kan ook alleen de geselecteerde optie in je State opslaan. Of een object met alle opties met een Boolean ‘isSelected’ per optie
@@ -181,6 +185,12 @@ function RecipeQuestions() {
                             />
                         );
                     })}
+                    {loading && (
+                        <Loader
+                            emoji="🥕"
+                            funnyText="Almost reached the boiling point!"
+                        />
+                    )}
                 </article>
             </main>
             <Footer />

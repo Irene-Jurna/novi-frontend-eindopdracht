@@ -5,6 +5,7 @@ import Button from "../../components/Button";
 import { useHistory } from "react-router-dom";
 import RecipeCardWithImage from "../../components/RecipeCardWithImage";
 import Footer from "../../components/Footer";
+import Loader from "../../components/Loader";
 
 function Home() {
     const [recipes, setRecipes] = useState([]);
@@ -115,11 +116,16 @@ function Home() {
                                 />
                             );
                         })}
-                        {loading && <p>Preparing ingredients(...loading)</p>}
+                        {loading && (
+                            <Loader
+                                emoji="🥬"
+                                funnyText="Preparing ingredients"
+                            />
+                        )}
                     </article>
                 </section>
             </main>
-            {recipes && <Footer />}
+            <Footer />
         </>
     );
 }

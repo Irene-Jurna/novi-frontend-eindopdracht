@@ -4,16 +4,19 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import RecipeCardOnlyText from "../../components/RecipeCardOnlyText";
 import Footer from "../../components/Footer";
+import Loader from "../../components/Loader";
 
 function RecipeSearcher() {
     const [searchValue, setSearchValue] = useState("");
     const [recipes, setRecipes] = useState([]);
     const [query, setQuery] = useState("");
     const [id, setId] = useState("");
+    const [loading, toggleLoading] = useState(false);
     const history = useHistory();
 
     useEffect(() => {
         async function fetchRecipes() {
+            toggleLoading(true);
             try {
                 const response = await axios.get(
                     `https://api.edamam.com/api/recipes/v2?type=public&q=${searchValue}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan`
@@ -30,6 +33,7 @@ function RecipeSearcher() {
             } catch (e) {
                 console.error(e);
             }
+            toggleLoading(false);
         }
 
         if (searchValue) {
@@ -89,6 +93,7 @@ function RecipeSearcher() {
                             />
                         );
                     })}
+                    {loading && <Loader emoji="🍆" funnyText="Chop chop" />}
                 </article>
             </main>
             <Footer />
