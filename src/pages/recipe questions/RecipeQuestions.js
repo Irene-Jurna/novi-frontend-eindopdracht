@@ -175,9 +175,10 @@ function RecipeQuestions() {
                 </header>
 
                 <article className="recipe-container">
-                    {recipes.map((recipe) => {
+                    {recipes.map((recipe, index) => {
                         return (
                             <RecipeCardOnlyText
+                                key={index}
                                 recipeId={() => history.push(`/recipe/${id}`)}
                                 recipeTitle={recipe.recipe.label}
                                 recipeDishType={recipe.recipe.dishType}

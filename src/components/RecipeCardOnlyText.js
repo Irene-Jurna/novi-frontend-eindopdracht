@@ -9,7 +9,7 @@ function RecipeCardOnlyText({
     totalTime,
 }) {
     return (
-        <article key={recipeTitle}>
+        <article>
             <ul onClick={recipeId}>
                 <li className={styles["recipe__item"]}>
                     {recipeTitle}

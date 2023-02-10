@@ -6,19 +6,17 @@ function RecipeCardWithImage({
     recipeId,
     imageSource,
     imageAlt,
-    imageKey,
     recipeDishType,
     recipeCuisineType,
 }) {
     return (
-        <section className={styles["recipe-card"]} key={recipeTitle}>
+        <section className={styles["recipe-card"]}>
             <ul className="recipe-url" onClick={recipeId}>
                 <figure>
                     <img
                         className={styles["recipe-card__fruit-img"]}
                         src={imageSource}
                         alt={imageAlt}
-                        key={imageKey}
                     />
                 </figure>
                 <figcaption className={styles["recipe-card__text"]}>

@@ -103,12 +103,12 @@ function Home() {
                         {recipes.slice(0, 9).map((recipe, index) => {
                             return (
                                 <RecipeCardWithImage
+                                    key={index}
                                     recipeTitle={recipe.recipe.label}
                                     recipeId={() =>
                                         history.push(`/recipe/${id}`)
                                     }
                                     imageSource={require(`../../assets/${veggieImages[index].image}.png`)}
-                                    imageKey={veggieImages[index].title}
                                     recipeDishType={recipe.recipe.dishType}
                                     recipeCuisineType={
                                         recipe.recipe.cuisineType
