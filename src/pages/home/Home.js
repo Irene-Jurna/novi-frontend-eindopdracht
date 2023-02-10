@@ -1,16 +1,18 @@
 import "./Home.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "../../components/Button";
 import { useHistory } from "react-router-dom";
 import RecipeCardWithImage from "../../components/RecipeCardWithImage";
 import Footer from "../../components/Footer";
 import Loader from "../../components/Loader";
+import Error from "../../components/Error";
 
 function Home() {
     const [recipes, setRecipes] = useState([]);
     const [id, setId] = useState("");
     const [loading, toggleLoading] = useState(false);
+    const [error, toggleError] = useState(false);
     const history = useHistory();
 
     const veggieImages = [
@@ -56,20 +58,20 @@ function Home() {
     useEffect(() => {
         async function fetchRecipes() {
             toggleLoading(true);
+            toggleError(false);
             try {
                 const result = await axios.get(
                     `https://api.edamam.com/api/recipes/v2?type=public&q=q&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan&random=true`
                 );
-                console.log(result.data.hits);
                 setRecipes(result.data.hits);
                 const findId = result.data.hits[0].recipe.uri.lastIndexOf("_");
                 const findCompleteId = result.data.hits[0].recipe.uri.slice(
                     findId + 1
                 );
                 setId(findCompleteId);
-                console.log(result.data.hits[0].recipe.uri);
             } catch (e) {
                 console.error(e);
+                toggleError(true);
             }
             toggleLoading(false);
         }
@@ -120,6 +122,14 @@ function Home() {
                             <Loader
                                 emoji="🥬"
                                 funnyText="Preparing ingredients"
+                            />
+                        )}
+                        {error && (
+                            <Error
+                                text="Thank you for using this website to find recipes. Due to a
+                technical issue on our end, we cannot show you recipes at this
+                moment. Please wait a few seconds to 1 minute and try connecting
+                again. If the issue keeps happening, you could try our favorite recipe today and try this website again tomorrow."
                             />
                         )}
                     </article>

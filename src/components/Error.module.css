@@ -1,0 +1,17 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error__heading {
+    font-family: 'Signika', sans-serif;
+    padding: 5px 0;
+    font-size: 32px;
+}
+
+.error__text {
+    font-family: 'Encode Sans Condensed', sans-serif;
+    font-size: 18px;
+    padding: 20px 0;
+}

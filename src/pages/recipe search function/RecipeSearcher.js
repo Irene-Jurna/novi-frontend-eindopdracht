@@ -5,6 +5,7 @@ import axios from "axios";
 import RecipeCardOnlyText from "../../components/RecipeCardOnlyText";
 import Footer from "../../components/Footer";
 import Loader from "../../components/Loader";
+import Error from "../../components/Error";
 
 function RecipeSearcher() {
     const [searchValue, setSearchValue] = useState("");
@@ -12,16 +13,17 @@ function RecipeSearcher() {
     const [query, setQuery] = useState("");
     const [id, setId] = useState("");
     const [loading, toggleLoading] = useState(false);
+    const [error, toggleError] = useState(false);
     const history = useHistory();
 
     useEffect(() => {
         async function fetchRecipes() {
             toggleLoading(true);
+            toggleError(false);
             try {
                 const response = await axios.get(
                     `https://api.edamam.com/api/recipes/v2?type=public&q=${searchValue}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan`
                 );
-                console.log(response.data.hits);
                 setRecipes(response.data.hits);
                 const findId =
                     response.data.hits[0].recipe.uri.lastIndexOf("_");
@@ -29,9 +31,9 @@ function RecipeSearcher() {
                     findId + 1
                 );
                 setId(findCompleteId);
-                console.log(response.data.hits[0].recipe.uri);
             } catch (e) {
                 console.error(e);
+                toggleError(true);
             }
             toggleLoading(false);
         }
@@ -43,7 +45,6 @@ function RecipeSearcher() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log({ searchValue });
         setQuery(searchValue);
     }
 
@@ -95,6 +96,9 @@ function RecipeSearcher() {
                         );
                     })}
                     {loading && <Loader emoji="🍆" funnyText="Chop chop" />}
+                    {error && (
+                        <Error text="Your search was received well, but we cannot find recipes for you. Please check if you made a typo. If not, then there was a technical issue on our end. In that case, please wait a few seconds to 1 minute and try connecting again. If the issue keeps happening, you could try to search for recipes via the other tabs in the menu (or navigation bar)." />
+                    )}
                 </article>
             </main>
             <Footer />
