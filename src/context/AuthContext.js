@@ -19,7 +19,11 @@ function AuthContextProvider({ children }) {
         const token = localStorage.getItem("token");
         if (token) {
             const decodedToken = jwtDecode(token);
-            fetchUserData(token, decodedToken);
+            if (decodedToken.exp * 1000 < Date.now()) {
+                logout();
+            } else {
+                fetchUserData(token, decodedToken);
+            }
         } else {
             toggleIsAuth({
                 ...isAuth,
@@ -66,7 +70,9 @@ function AuthContextProvider({ children }) {
         toggleIsAuth({
             ...isAuth,
             isAuth: true,
-            name: decodedToken.sub,
+            user: {
+                name: decodedToken.sub,
+            },
         });
         history.push("/profile");
     }
