@@ -2,7 +2,7 @@ import "./Home.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "../../components/Button";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import RecipeCardWithImage from "../../components/RecipeCardWithImage";
 import Footer from "../../components/Footer";
 import Loader from "../../components/Loader";
@@ -79,6 +79,10 @@ function Home() {
         fetchRecipes();
     }, []);
 
+    function test() {
+        return `<Link to="/">test</Link>`;
+    }
+
     return (
         <>
             <main>
@@ -125,12 +129,19 @@ function Home() {
                             />
                         )}
                         {error && (
-                            <Error
-                                text="Thank you for using this website to find recipes. Due to a
-                technical issue on our end, we cannot show you recipes at this
-                moment. Please wait a few seconds to 1 minute and try connecting
-                again. If the issue keeps happening, you could try our favorite recipe today and try this website again tomorrow."
-                            />
+                            <Error>
+                                <p>
+                                    Thank you for using this website to find
+                                    recipes. Due to a technical issue on our
+                                    end, we cannot show you recipes at this
+                                    moment. Please wait a few seconds to 1
+                                    minute and try connecting again. If the
+                                    issue keeps happening,{" "}
+                                    <a href="www.google.nl">link</a> you could
+                                    try today and try this website again
+                                    tomorrow.
+                                </p>
+                            </Error>
                         )}
                     </article>
                 </section>

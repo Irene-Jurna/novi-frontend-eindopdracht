@@ -14,9 +14,7 @@ function RecipeInformation() {
     console.log(id);
     useEffect(() => {
         // Nieuw
-        const loop = setInterval(() => {
-            console.log("loading...");
-        }, 1000);
+        console.log("loading...");
         async function fetchRecipeData() {
             try {
                 const result = await axios.get(
@@ -35,9 +33,9 @@ function RecipeInformation() {
         // nieuw
         return function cleanup() {
             console.log("Het interval wordt gestopt!");
-            clearInterval(loop);
+            controller.abort();
         };
-    }, [controller.signal, id]);
+    }, [id]);
 
     return (
         <main>

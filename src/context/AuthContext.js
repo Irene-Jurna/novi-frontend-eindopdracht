@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const AuthContext = createContext({});
 
-//Klopt de status 'done' hieronder? In banana professional is het pending, maar dan start mijn app niet op. Als je nu de app ververst op een andere pagina dan profile, linkt die naar profile (als je ingelogd bent)
+//JWT Decode nodig om te checken of de token nog geldig is (expiration console log expiration date)
 function AuthContextProvider({ children }) {
     const [isAuth, toggleIsAuth] = useState({
         isAuth: false,
