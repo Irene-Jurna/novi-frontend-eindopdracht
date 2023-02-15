@@ -1,6 +1,6 @@
 import "./RecipeSearcher.css";
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import RecipeCardOnlyText from "../../components/RecipeCardOnlyText";
 import Footer from "../../components/Footer";
@@ -31,6 +31,7 @@ function RecipeSearcher() {
                     findId + 1
                 );
                 setId(findCompleteId);
+                console.log("RecipeSearcher ID: " + findCompleteId);
             } catch (e) {
                 console.error(e);
                 toggleError(true);
@@ -97,7 +98,22 @@ function RecipeSearcher() {
                     })}
                     {loading && <Loader emoji="🍆" funnyText="Chop chop" />}
                     {error && (
-                        <Error text="Your search was received well, but we cannot find recipes for you. Please check if you made a typo. If not, then there was a technical issue on our end. In that case, please wait a few seconds to 1 minute and try connecting again. If the issue keeps happening, you could try to search for recipes via the other tabs in the menu (or navigation bar)." />
+                        <Error>
+                            <p>
+                                Your search was received well, but we cannot
+                                find recipes for you. Please check if you made a
+                                typo. If you spelled your search correctly,
+                                there is a technical issue on our end. In that
+                                case, please wait a few seconds to 1 minute and
+                                try to refresh this page. If the issue keeps
+                                happening, you could try to search for recipes
+                                via{" "}
+                                <Link to="/recipe-questions">
+                                    our recipe question list
+                                </Link>
+                                .
+                            </p>
+                        </Error>
                     )}
                 </article>
             </main>

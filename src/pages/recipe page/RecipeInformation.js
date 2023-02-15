@@ -11,10 +11,8 @@ function RecipeInformation() {
     const [recipeInformations, setRecipeInformations] = useState("");
     const controller = new AbortController();
 
-    console.log(id);
+    console.log("RecipeInformation ID: " + id);
     useEffect(() => {
-        // Nieuw
-        console.log("loading...");
         async function fetchRecipeData() {
             try {
                 const result = await axios.get(
@@ -23,16 +21,13 @@ function RecipeInformation() {
                         signal: controller.signal,
                     }
                 );
-                console.log(result.data.recipe);
                 setRecipeInformations(result.data.recipe);
             } catch (e) {
                 console.error(e);
             }
         }
         fetchRecipeData();
-        // nieuw
         return function cleanup() {
-            console.log("Het interval wordt gestopt!");
             controller.abort();
         };
     }, [id]);
@@ -51,12 +46,10 @@ function RecipeInformation() {
                     <p>Ingredients:</p>
                     {recipeInformations &&
                         recipeInformations.ingredientLines.map(
-                            (recipeInformation) => {
+                            (recipeInformation, index) => {
                                 return (
-                                    <ul>
-                                        <li key={recipeInformation}>
-                                            {recipeInformation}
-                                        </li>
+                                    <ul key={index}>
+                                        <li>{recipeInformation}</li>
                                     </ul>
                                 );
                             }
@@ -75,13 +68,16 @@ function RecipeInformation() {
 
             <article className="row-container health-container">
                 {recipeInformations &&
-                    recipeInformations.healthLabels.map((healthInformation) => {
-                        return (
-                            <HealthInfoCard
-                                healthInformation={healthInformation}
-                            />
-                        );
-                    })}
+                    recipeInformations.healthLabels.map(
+                        (healthInformation, index) => {
+                            return (
+                                <HealthInfoCard
+                                    key={index}
+                                    healthInformation={healthInformation}
+                                />
+                            );
+                        }
+                    )}
             </article>
         </main>
     );

@@ -197,7 +197,12 @@ function RecipeQuestions() {
                         />
                     )}
                     {error && (
-                        <Error text="Sorry, there are no recipes in our cookbook that match your search request." />
+                        <Error>
+                            <p>
+                                Sorry, there are no recipes in our cookbook that
+                                match your search request.
+                            </p>
+                        </Error>
                     )}
                 </article>
             </main>

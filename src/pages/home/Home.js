@@ -69,6 +69,7 @@ function Home() {
                     findId + 1
                 );
                 setId(findCompleteId);
+                console.log("Home ID: " + findCompleteId);
             } catch (e) {
                 console.error(e);
                 toggleError(true);
@@ -136,10 +137,14 @@ function Home() {
                                     end, we cannot show you recipes at this
                                     moment. Please wait a few seconds to 1
                                     minute and try connecting again. If the
-                                    issue keeps happening,{" "}
-                                    <a href="www.google.nl">link</a> you could
-                                    try today and try this website again
-                                    tomorrow.
+                                    issue keeps happening, you could try{" "}
+                                    <a
+                                        href="https://www.ah.nl/allerhande/recept/R-R694720/linzensoep-met-bleekselderij"
+                                        target="_blank"
+                                    >
+                                        our favorite recipe
+                                    </a>{" "}
+                                    today and try this website again tomorrow.
                                 </p>
                             </Error>
                         )}
