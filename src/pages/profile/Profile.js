@@ -1,3 +1,4 @@
+import styles from "./Profile.module.css";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -34,7 +35,9 @@ function Profile() {
 
     return (
         <>
-            <main className="blue-background full-screen item-centered">
+            <main
+                className={`${styles["full-screen"]} ${styles["full-screen--color-blue"]}`}
+            >
                 <h1>Welcome to your profile page</h1>
                 <h2>
                     {profileData.username}, here is a secret zen koan for you:
