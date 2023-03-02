@@ -1,4 +1,4 @@
-import "./Home.css";
+import "./Home.module.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "../../components/Button";
@@ -7,6 +7,7 @@ import RecipeCardWithImage from "../../components/RecipeCardWithImage";
 import Footer from "../../components/Footer";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
+import styles from "./Home.module.css";
 
 function Home() {
     const [recipes, setRecipes] = useState([]);
@@ -87,10 +88,12 @@ function Home() {
     return (
         <>
             <main>
-                <header className="background-image row-container-top yellow-background">
+                <header
+                    className={`${styles["background-image"]} ${styles["row-container-top"]} ${styles["yellow-background"]}`}
+                >
                     <section>
                         <h1>VanVeg</h1>
-                        <p className="intro-text">
+                        <p className={styles["intro-text"]}>
                             VanVeg is the vegan Hot spot online. Our
                             mouth-watering, traditional curries from all over
                             the world, healthy snacks and heavenly sweets will
@@ -104,9 +107,11 @@ function Home() {
                     </section>
                 </header>
 
-                <section className="recipe-card-container">
-                    <h2 className="row-container">Today's top recipes</h2>
-                    <article className="recipe-card-subcontainer">
+                <section className={styles["recipe-card-container"]}>
+                    <h2 className={styles["row-container"]}>
+                        Today's top recipes
+                    </h2>
+                    <article className={styles["recipe-card-subcontainer"]}>
                         {recipes.slice(0, 9).map((recipe, index) => {
                             return (
                                 <RecipeCardWithImage

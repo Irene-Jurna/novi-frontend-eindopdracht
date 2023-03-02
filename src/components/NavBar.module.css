@@ -50,9 +50,9 @@
     cursor: pointer;
 }
 
-/*.navbar-links > li {*/
-/*    padding: 0 10px;*/
-/*}*/
+.navbar__link > li {
+    padding: 0 10px;
+}
 
 nav a,
 nav a:visited {
@@ -71,4 +71,20 @@ nav a:hover {
 
 .default-link {
     text-decoration: none;
+}
+
+@media screen and (min-width: 576px) {
+    .navbar {
+        padding: 20px 100px;
+        flex: 1 1 auto;
+    }
+    .navbar__link {
+        display: flex;
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 0;
+        justify-content: flex-end;
+        box-sizing: border-box;
+        align-items: center;
+    }
 }

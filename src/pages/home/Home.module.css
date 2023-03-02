@@ -10,6 +10,19 @@
     justify-content: center;
 }
 
+.row-container-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 100px;
+    flex-wrap: wrap;
+}
+
+.yellow-background {
+    background-color: rgba(246, 245, 174, 0.5);
+}
+
+
 .intro-text {
     max-width: 550px;
     padding: 0 5px;
@@ -25,6 +38,15 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.row-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 60px 100px 0;
+    flex-wrap: wrap;
 }
 
 /* ------------------------------- 2. Media Queries -------------------------------- */
@@ -43,9 +65,21 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .row-container-top {
+        padding: 180px 11vw;
+    }
+}
+
 @media screen and (min-width: 768px) {
     .background-image {
         background-position: 57% 80%;
+    }
+    .row-container-top {
+        padding: 180px 5vw;
+    }
+    .row-container {
+        flex-wrap: nowrap;
     }
 }
 
