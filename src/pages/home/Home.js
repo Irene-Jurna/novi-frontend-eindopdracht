@@ -106,11 +106,11 @@ function Home() {
                     </section>
                 </header>
 
-                <section className={styles.container}>
-                    <h2 className={styles["row-container"]}>
+                <section className={styles["recipes-container"]}>
+                    <h2 className={styles["recipes__title"]}>
                         Today's top recipes
                     </h2>
-                    <article className={styles["recipe-card-subcontainer"]}>
+                    <article className={styles["recipe-container__cards"]}>
                         {recipes.slice(0, 9).map((recipe, index) => {
                             return (
                                 <RecipeCardWithImage

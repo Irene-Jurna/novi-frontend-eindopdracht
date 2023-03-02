@@ -1,3 +1,4 @@
+import styles from "./Login.module.css";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -32,8 +33,10 @@ function Login() {
 
     return (
         <>
-            <main className="green-background full-screen">
-                <header className="item-centered">
+            <main
+                className={`${styles["full-screen"]} ${styles["full-screen--color-green"]}`}
+            >
+                <header className={styles.header}>
                     <h1>Login</h1>
                     <p>
                         Login to find recipes that suit your diet, such as
@@ -43,12 +46,12 @@ function Login() {
 
                 <form
                     onSubmit={handleSubmit}
-                    className="register-form form-text form-items"
+                    className={`${styles.form} ${styles.form__text}`}
                 >
                     <label htmlFor="email-field">
                         Username:
                         <input
-                            className="form-input"
+                            className={styles.form__input}
                             type="text"
                             id="username-field"
                             name="username"
@@ -60,7 +63,7 @@ function Login() {
                     <label htmlFor="password-field">
                         Password:
                         <input
-                            className="form-input"
+                            className={styles.form__input}
                             type="password"
                             id="password-field"
                             name="password"
@@ -71,14 +74,16 @@ function Login() {
 
                     <article>
                         {error && (
-                            <p className="form-error">
+                            <p
+                                className={`${styles.form__text} ${styles["form__text--error"]}`}
+                            >
                                 Something went wrong. Did you fill in the right
                                 username and password? Please try again.
                             </p>
                         )}
                     </article>
 
-                    <button type="submit" className="form-button">
+                    <button type="submit" className={styles.form__button}>
                         Login
                     </button>
                 </form>
