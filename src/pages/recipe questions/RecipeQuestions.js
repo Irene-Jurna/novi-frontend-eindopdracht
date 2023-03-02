@@ -1,3 +1,4 @@
+import styles from "./RecipeQuestions.module.css";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import "../../App.css";
 import Button from "../../components/Button";
@@ -84,14 +85,14 @@ function RecipeQuestions() {
                 <header
                     className={
                         id || loading || error
-                            ? "row-container-top green-background"
-                            : "full-screen green-background"
+                            ? `${styles.header} ${styles["background--color-green"]}`
+                            : `${styles["full-screen"]} ${styles["background--color-green"]}`
                     }
                 >
                     <h2>Find all the ingredients for your perfect recipe</h2>
 
-                    <form className="form-question-list">
-                        <span className="form-text">
+                    <form className={styles.form}>
+                        <span className={styles.form__text}>
                             The recipe I'd like to make is for{" "}
                         </span>
                         <select
@@ -110,7 +111,7 @@ function RecipeQuestions() {
                             </option>
                         </select>
 
-                        <span className="form-text">
+                        <span className={styles.form__text}>
                             {" "}
                             . My cooking session preferably takes{" "}
                         </span>
@@ -132,7 +133,7 @@ function RecipeQuestions() {
                             </option>
                         </select>
 
-                        <span className="form-text">
+                        <span className={styles.form__text}>
                             {" "}
                             . And I'd love to cook
                         </span>
@@ -152,7 +153,10 @@ function RecipeQuestions() {
                             <option value="European">European</option>
                         </select>
 
-                        <span className="form-text"> cuisine. Diets? </span>
+                        <span className={styles.form__text}>
+                            {" "}
+                            cuisine. Diets?{" "}
+                        </span>
                         <select
                             className="form-dropdown-menu"
                             id="questionDiets"
@@ -168,7 +172,7 @@ function RecipeQuestions() {
                             <option value="fodmap-free">FODMAP</option>
                         </select>
 
-                        <div className="form-center">
+                        <div className={styles.form__align}>
                             <Button
                                 type="button"
                                 onClick={getRecipes}
