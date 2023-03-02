@@ -1,4 +1,4 @@
-import "./RecipeSearcher.css";
+import styles from "./RecipeSearcher.module.css";
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
@@ -55,21 +55,20 @@ function RecipeSearcher() {
                 <header
                     className={
                         query
-                            ? "row-container-top champagne-background"
-                            : "full-screen champagne-background"
+                            ? `${styles.header} ${styles["background--color-champagne"]}`
+                            : `${styles["full-screen"]} ${styles["background--color-champagne"]}`
                     }
                 >
-                    <section>
+                    <section className={styles["search__align"]}>
                         <h2>Find your recipe</h2>
                         <p>Search your favorites</p>
                     </section>
 
-                    <form
-                        className="search-container"
-                        type="submit"
-                        onSubmit={handleSubmit}
-                    >
-                        <label htmlFor="form-input" className="search-item">
+                    <form type="submit" onSubmit={handleSubmit}>
+                        <label
+                            htmlFor="form-input"
+                            className={styles["search__align"]}
+                        >
                             Yum... You're almost there:
                             <input
                                 type="text"
@@ -77,14 +76,14 @@ function RecipeSearcher() {
                                 name="input-search"
                                 value={searchValue}
                                 placeholder="Type here"
-                                className="search-bar"
+                                className={styles["search__bar"]}
                                 onChange={(e) => setSearchValue(e.target.value)}
                             />
                         </label>
                     </form>
                 </header>
 
-                <article className="recipe-container">
+                <article className={styles["recipe-container"]}>
                     {recipes.map((recipe, index) => {
                         return (
                             <RecipeCardOnlyText

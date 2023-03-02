@@ -1,14 +1,36 @@
-/* ------------------------------- 1. Areas ---------------------------------------- */
+/* ------------------------------- Areas ---------------------------------------- */
 
-/* --------------- 1.1 Search panel ------------------------- */
+/* --------------- Search panel ------------------------- */
 
-.search-item {
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 100px;
+    flex-wrap: wrap;
+}
+
+.full-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 100vw;
+    padding: 250px 150px;
+}
+
+.background--color-champagne {
+    background-color: rgba(246, 231, 203, 0.5);
+}
+
+.search__align {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.search-bar {
+.search__bar {
     padding: 7px 30px;
     margin: 20px;
     width: 250px;
@@ -21,7 +43,7 @@
     text-align: center;
 }
 
-/* --------------- 1.2 Recipe cards ------------------- */
+/* --------------- Recipe cards ------------------- */
 
 .recipe-container {
     display: flex;
@@ -29,7 +51,13 @@
     padding-top: 20px;
 }
 
-/* ------------------------------- 2. Media Queries -------------------------------- */
+/* ------------------------------- Media Queries -------------------------------- */
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 180px 11vw;
+    }
+}
 
 @media screen and (min-width: 768px) {
     .recipe-container {
@@ -37,6 +65,9 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+    }
+    .header {
+        padding: 180px 5vw;
     }
 }
 
