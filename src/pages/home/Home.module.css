@@ -1,7 +1,15 @@
 /* ------------------------------- 1. Areas ---------------------------------------- */
 
 /* --------------- 1.1 Introduction ------------------------- */
-.background-image {
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 100px;
+    flex-wrap: wrap;
+}
+
+.header__img{
     background-image: url(../../assets/chicoryNoBgOpacity50.png);
     background-size: auto 330px;
     background-repeat: no-repeat;
@@ -10,31 +18,18 @@
     justify-content: center;
 }
 
-.row-container-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 100px 100px;
-    flex-wrap: wrap;
-}
-
-.yellow-background {
+.header--color-yellow {
     background-color: rgba(246, 245, 174, 0.5);
 }
 
-
-.intro-text {
+.header__text {
     max-width: 550px;
     padding: 0 5px;
 }
 
 /* --------------- 1.2 Top recipe's today ------------------- */
 
-/*Only generic styling. For generic styling, see App.css*/
-
-/* --------------- 1.3 Recipe cards ------------------- */
-
-.recipe-card-container {
+.container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -49,33 +44,35 @@
     flex-wrap: wrap;
 }
 
+/* --------------- 1.3 Recipe cards ------------------- */
+
 /* ------------------------------- 2. Media Queries -------------------------------- */
 
 @media screen and (min-width: 410px) {
-    .background-image {
+    .header__img {
         background-size: auto 300px;
         background-position: 110% 90%;
     }
 }
 
 @media screen and (min-width: 576px) {
-    .background-image {
+    .header__img{
         background-size: auto 300px;
         background-position: 110% 90%;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .row-container-top {
+    .header {
         padding: 180px 11vw;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .background-image {
+    .header__img {
         background-position: 57% 80%;
     }
-    .row-container-top {
+    .header {
         padding: 180px 5vw;
     }
     .row-container {
@@ -84,28 +81,6 @@
 }
 
 @media screen and (min-width: 992px) {
-    .recipe-card-subcontainer {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        min-width: 900px;
-        max-width: 1000px;
-    }
-}
-
-@media screen and (min-width: 1400px) {
-    .recipe-card-subcontainer {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        min-width: 900px;
-        max-width: 1000px;
-    }
-}
-
-@media screen and (min-width: 1600px) {
     .recipe-card-subcontainer {
         display: flex;
         flex-direction: row;

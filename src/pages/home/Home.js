@@ -1,13 +1,12 @@
-import "./Home.module.css";
+import styles from "./Home.module.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "../../components/Button";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import RecipeCardWithImage from "../../components/RecipeCardWithImage";
 import Footer from "../../components/Footer";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
-import styles from "./Home.module.css";
 
 function Home() {
     const [recipes, setRecipes] = useState([]);
@@ -89,11 +88,11 @@ function Home() {
         <>
             <main>
                 <header
-                    className={`${styles["background-image"]} ${styles["row-container-top"]} ${styles["yellow-background"]}`}
+                    className={`${styles.header} ${styles["header--color-yellow"]} ${styles.header__img}`}
                 >
                     <section>
                         <h1>VanVeg</h1>
-                        <p className={styles["intro-text"]}>
+                        <p className={styles.header__text}>
                             VanVeg is the vegan Hot spot online. Our
                             mouth-watering, traditional curries from all over
                             the world, healthy snacks and heavenly sweets will
@@ -107,7 +106,7 @@ function Home() {
                     </section>
                 </header>
 
-                <section className={styles["recipe-card-container"]}>
+                <section className={styles.container}>
                     <h2 className={styles["row-container"]}>
                         Today's top recipes
                     </h2>
