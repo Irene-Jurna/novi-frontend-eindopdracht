@@ -1,4 +1,4 @@
-import "./RecipeInformation.css";
+import styles from "./RecipeInformation.module.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -34,9 +34,13 @@ function RecipeInformation() {
 
     return (
         <main>
-            <header className="row-container-top yellow-background">
-                <section className="info-border">
-                    <h1 className="recipe-title">{recipeInformations.label}</h1>
+            <header
+                className={`${styles.header} ${styles["header--color-yellow"]}`}
+            >
+                <section className={styles["header--border"]}>
+                    <h1 className={styles.header__title}>
+                        {recipeInformations.label}
+                    </h1>
                     <RecipeInfoCard
                         recipeDishType={recipeInformations.dishType}
                         recipeCuisineType={recipeInformations.cuisineType}
@@ -64,9 +68,9 @@ function RecipeInformation() {
                 </section>
             </header>
 
-            <h2 className="recipe-section-title">This recipe is: </h2>
+            <h2 className={styles["health-info__title"]}>This recipe is: </h2>
 
-            <article className="row-container health-container">
+            <article className={styles["health-info"]}>
                 {recipeInformations &&
                     recipeInformations.healthLabels.map(
                         (healthInformation, index) => {
