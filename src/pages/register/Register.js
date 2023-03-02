@@ -91,7 +91,7 @@ function Register() {
                         )}
                     </article>
 
-                    <button type="submit" className="form-button">
+                    <button type="submit" className={styles.form__button}>
                         Register
                     </button>
 

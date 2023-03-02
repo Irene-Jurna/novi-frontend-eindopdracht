@@ -17,7 +17,7 @@
 }
 
 .background--color-green {
-    background-color: rgba(166, 196, 138, 0.5);
+    background-color: var(--green-background);
 }
 
 .form {

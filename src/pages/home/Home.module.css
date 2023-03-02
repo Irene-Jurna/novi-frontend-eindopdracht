@@ -19,7 +19,7 @@
 }
 
 .header--color-yellow {
-    background-color: rgba(246, 245, 174, 0.5);
+    background-color: var(--yellow-background);
 }
 
 .header__text {

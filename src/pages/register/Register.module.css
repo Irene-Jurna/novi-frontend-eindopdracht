@@ -9,7 +9,7 @@
 }
 
 .full-screen--color-pink {
-    background-color: rgba(221, 151, 135, 0.3);
+    background-color: var(--pink-background);
 }
 
 .form {
@@ -25,4 +25,17 @@
 
 .form__input {
     margin-left: 10px;
+}
+
+.form__button {
+    padding: 7px 30px;
+    margin: 20px;
+    width: 250px;
+    border-radius: 3px;
+    background-color: var(--white);
+    border-color: var(--yellow);
+    border-style: outset;
+    cursor: pointer;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    text-align: center;
 }

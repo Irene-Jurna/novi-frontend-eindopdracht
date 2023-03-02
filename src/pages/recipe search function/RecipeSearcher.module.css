@@ -21,7 +21,7 @@
 }
 
 .background--color-champagne {
-    background-color: rgba(246, 231, 203, 0.5);
+    background-color: var(--champagne-background);
 }
 
 .search__align {
@@ -35,8 +35,8 @@
     margin: 20px;
     width: 250px;
     border-radius: 3px;
-    background-color: #FFFFFF;
-    border-color: #F6E7CB;
+    background-color: var(--white);
+    border-color: var(--yellow);
     border-style: outset;
     cursor: pointer;
     font-family: 'Encode Sans Condensed', sans-serif;

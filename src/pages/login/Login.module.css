@@ -9,7 +9,7 @@
 }
 
 .full-screen--color-green {
-    background-color: rgba(166, 196, 138, 0.5);
+    background-color: var(--green-background);
 }
 
 .header {
@@ -38,7 +38,7 @@
     margin: 20px 20px 20px 0;
     width: 150px;
     border-radius: 3px;
-    border-color: #A6C48A;
+    border-color: var(--olivine);
     border-style: solid;
     cursor: pointer;
     font-family: 'Encode Sans Condensed', sans-serif;

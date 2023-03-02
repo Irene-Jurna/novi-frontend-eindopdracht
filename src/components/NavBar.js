@@ -28,7 +28,7 @@ function NavBar() {
                             <img
                                 src={logo}
                                 alt="VanVeg logo"
-                                className="logo-img"
+                                className={styles["navbar__logo-size"]}
                             />
                         </Link>
                     </li>
