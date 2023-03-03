@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Signika:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Signika:wght@500&display=swap');
+
 :root {
     --text: #292929;
     --pink: #DD9787;
@@ -37,15 +40,7 @@
     align-items: center;
 }
 
-/*.logo-img {*/
-/*    height: 50px;*/
-/*    width: auto;*/
-/*}*/
-
 /* --------------- Typography  ----------------------- */
-
-@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Signika:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Signika:wght@500&display=swap');
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Signika', sans-serif;
@@ -71,25 +66,25 @@ li {
     font-size: 16px;
 }
 
-.pink-background {
-    background-color: rgba(221, 151, 135, 0.3);
-}
+/*.pink-background {*/
+/*    background-color: rgba(221, 151, 135, 0.3);*/
+/*}*/
 
-.yellow-background {
-    background-color: rgba(246, 245, 174, 0.5);
-}
+/*.yellow-background {*/
+/*    background-color: rgba(246, 245, 174, 0.5);*/
+/*}*/
 
-.champagne-background {
-    background-color: rgba(246, 231, 203, 0.5);
-}
+/*.champagne-background {*/
+/*    background-color: rgba(246, 231, 203, 0.5);*/
+/*}*/
 
-.green-background {
-    background-color: rgba(166, 196, 138, 0.5);
-}
+/*.green-background {*/
+/*    background-color: rgba(166, 196, 138, 0.5);*/
+/*}*/
 
-.blue-background {
-    background-color: rgba(116, 211, 174, 0.3);
-}
+/*.blue-background {*/
+/*    background-color: rgba(116, 211, 174, 0.3);*/
+/*}*/
 
 /* --------------- 3.2 Reusables General --------------------------- */
 

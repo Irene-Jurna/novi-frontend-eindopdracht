@@ -106,9 +106,6 @@ function RecipeQuestions() {
                             <option value="Lunch">lunch</option>
                             <option value="Dinner">dinner</option>
                             <option value="Teatime">tea or snack time</option>
-                            <option value="Cocktailparty">
-                                a cocktail party!
-                            </option>
                         </select>
 
                         <span className={styles.form__text}>
@@ -144,13 +141,17 @@ function RecipeQuestions() {
                             onChange={handleClick("cuisineType")}
                         >
                             <option value=""></option>
-                            <option value="">any type of</option>
+                            <option value="American&Asian&British&Caribbean&Central%20Europe&Chinese&French&Indian&Japanese&Kosher&Mediterranean&Mexican&Middle%20Eastern&Nordic&South%20American&South%20East%20Asian">
+                                any type of
+                            </option>
                             <option value="American">American</option>
                             <option value="Asian">Asian</option>
-                            <option value="SouthAmerican">
+                            <option value="South%20American">
                                 South American
                             </option>
-                            <option value="European">European</option>
+                            <option value="Central%20Europe&Eastern%20Europe&French&Nordic">
+                                European
+                            </option>
                         </select>
 
                         <span className={styles.form__text}>
@@ -164,7 +165,7 @@ function RecipeQuestions() {
                             onChange={handleClick("health")}
                         >
                             <option value=""></option>
-                            <option value="">
+                            <option value="alcohol-free&celery-free&crustacean-free&dairy-free&DASH&egg-free&fish-free&fodmap-free&gluten-free&immuno-supportive&keto-friendly&kidney-friendly&kosher&low-fat-abs&low-potassium&low-sugar&lupine-free&Mediterranean&mollusk-free&mustard-free&no-oil-added&paleo&peanut-free&pescatarian&pork-free&red-meat-free&sesame-free&shellfish-free&soy-free&sugar-conscious&sulfite-free&health=tree-nut-free&health=vegan&health=vegetarian&health=wheat-free">
                                 No diets, show me everything!
                             </option>
                             <option value="wheat-free">wheat-free</option>
@@ -182,7 +183,7 @@ function RecipeQuestions() {
                     </form>
                 </header>
 
-                <article className="recipe-container">
+                <article className={styles["recipe-container"]}>
                     {recipes.map((recipe, index) => {
                         return (
                             <RecipeCardOnlyText
