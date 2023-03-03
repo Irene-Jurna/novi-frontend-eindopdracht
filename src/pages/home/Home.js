@@ -10,7 +10,7 @@ import Error from "../../components/Error";
 
 function Home() {
     const [recipes, setRecipes] = useState([]);
-    const [id, setId] = useState("");
+    const [id, setId] = useState([]);
     const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
     const history = useHistory();
@@ -64,12 +64,19 @@ function Home() {
                     `https://api.edamam.com/api/recipes/v2?type=public&q=q&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan&random=true`
                 );
                 setRecipes(result.data.hits);
-                const findId = result.data.hits[0].recipe.uri.lastIndexOf("_");
-                const findCompleteId = result.data.hits[0].recipe.uri.slice(
-                    findId + 1
-                );
-                setId(findCompleteId);
-                console.log("Home ID: " + findCompleteId);
+
+                const recipeIds = [];
+
+                for (let i = 0; i < 9; i++) {
+                    const findId =
+                        result.data.hits[i].recipe.uri.lastIndexOf("_");
+                    const findCompleteId = result.data.hits[i].recipe.uri.slice(
+                        findId + 1
+                    );
+                    recipeIds.push(findCompleteId);
+                    console.log("Home ID: " + findCompleteId);
+                }
+                setId(recipeIds);
             } catch (e) {
                 console.error(e);
                 toggleError(true);
@@ -79,10 +86,6 @@ function Home() {
 
         fetchRecipes();
     }, []);
-
-    function test() {
-        return `<Link to="/">test</Link>`;
-    }
 
     return (
         <>
@@ -112,12 +115,13 @@ function Home() {
                     </h2>
                     <article className={styles["recipe-container__cards"]}>
                         {recipes.slice(0, 9).map((recipe, index) => {
+                            console.log("Nu ga ik af");
                             return (
                                 <RecipeCardWithImage
                                     key={index}
                                     recipeTitle={recipe.recipe.label}
                                     recipeId={() =>
-                                        history.push(`/recipe/${id}`)
+                                        history.push(`/recipe/${id[index]}`)
                                     }
                                     imageSource={require(`../../assets/${veggieImages[index].image}.png`)}
                                     recipeDishType={recipe.recipe.dishType}
