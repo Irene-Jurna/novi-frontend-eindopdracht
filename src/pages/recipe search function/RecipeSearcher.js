@@ -25,8 +25,8 @@ function RecipeSearcher() {
                     `https://api.edamam.com/api/recipes/v2?type=public&q=${searchValue}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan`
                 );
                 setRecipes(response.data.hits);
-                const recipeIds = [];
 
+                const recipeIds = [];
                 for (let i = 0; i < 20; i++) {
                     const findId =
                         response.data.hits[i].recipe.uri.lastIndexOf("_");
