@@ -74,7 +74,6 @@ function Home() {
                         findId + 1
                     );
                     recipeIds.push(findCompleteId);
-                    console.log("Home ID: " + findCompleteId);
                 }
                 setId(recipeIds);
             } catch (e) {
@@ -115,7 +114,6 @@ function Home() {
                     </h2>
                     <article className={styles["recipe-container__cards"]}>
                         {recipes.slice(0, 9).map((recipe, index) => {
-                            console.log("Nu ga ik af");
                             return (
                                 <RecipeCardWithImage
                                     key={index}

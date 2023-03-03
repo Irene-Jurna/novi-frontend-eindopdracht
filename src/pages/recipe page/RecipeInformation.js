@@ -11,7 +11,6 @@ function RecipeInformation() {
     const [recipeInformations, setRecipeInformations] = useState("");
     const controller = new AbortController();
 
-    console.log("RecipeInformation ID: " + id);
     useEffect(() => {
         async function fetchRecipeData() {
             try {

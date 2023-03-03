@@ -11,7 +11,7 @@ function RecipeSearcher() {
     const [searchValue, setSearchValue] = useState("");
     const [recipes, setRecipes] = useState([]);
     const [query, setQuery] = useState("");
-    const [id, setId] = useState("");
+    const [id, setId] = useState([]);
     const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
     const history = useHistory();
@@ -25,13 +25,17 @@ function RecipeSearcher() {
                     `https://api.edamam.com/api/recipes/v2?type=public&q=${searchValue}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan`
                 );
                 setRecipes(response.data.hits);
-                const findId =
-                    response.data.hits[0].recipe.uri.lastIndexOf("_");
-                const findCompleteId = response.data.hits[0].recipe.uri.slice(
-                    findId + 1
-                );
-                setId(findCompleteId);
-                console.log("RecipeSearcher ID: " + findCompleteId);
+                const recipeIds = [];
+
+                for (let i = 0; i < 20; i++) {
+                    const findId =
+                        response.data.hits[i].recipe.uri.lastIndexOf("_");
+                    const findCompleteId = response.data.hits[
+                        i
+                    ].recipe.uri.slice(findId + 1);
+                    recipeIds.push(findCompleteId);
+                }
+                setId(recipeIds);
             } catch (e) {
                 console.error(e);
                 toggleError(true);
@@ -88,7 +92,9 @@ function RecipeSearcher() {
                         return (
                             <RecipeCardOnlyText
                                 key={index}
-                                recipeId={() => history.push(`/recipe/${id}`)}
+                                recipeId={() =>
+                                    history.push(`/recipe/${id[index]}`)
+                                }
                                 recipeTitle={recipe.recipe.label}
                                 recipeDishType={recipe.recipe.dishType}
                                 totalTime={recipe.recipe.totalTime}
