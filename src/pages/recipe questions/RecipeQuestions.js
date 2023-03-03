@@ -168,9 +168,12 @@ function RecipeQuestions() {
                             <option value="alcohol-free&celery-free&crustacean-free&dairy-free&DASH&egg-free&fish-free&fodmap-free&gluten-free&immuno-supportive&keto-friendly&kidney-friendly&kosher&low-fat-abs&low-potassium&low-sugar&lupine-free&Mediterranean&mollusk-free&mustard-free&no-oil-added&paleo&peanut-free&pescatarian&pork-free&red-meat-free&sesame-free&shellfish-free&soy-free&sugar-conscious&sulfite-free&health=tree-nut-free&health=vegan&health=vegetarian&health=wheat-free">
                                 No diets, show me everything!
                             </option>
-                            <option value="wheat-free">wheat-free</option>
-                            <option value="tree-and-nut">nut-free</option>
+                            <option value="wheat-free&gluten-free">
+                                Wheat and gluten-free
+                            </option>
+                            <option value="tree-nut-free">Nut-free</option>
                             <option value="fodmap-free">FODMAP</option>
+                            <option value="keto-friendly">Keto friendly</option>
                         </select>
 
                         <div className={styles.form__align}>
