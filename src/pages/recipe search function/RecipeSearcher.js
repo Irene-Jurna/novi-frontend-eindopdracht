@@ -68,7 +68,7 @@ function RecipeSearcher() {
                         <p>Search your favorites</p>
                     </section>
 
-                    <form type="submit" onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
                         <label
                             htmlFor="form-input"
                             className={styles["search__align"]}

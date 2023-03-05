@@ -25,6 +25,7 @@ function RecipeInformation() {
                 console.error(e);
             }
         }
+
         fetchRecipeData();
         return function cleanup() {
             controller.abort();

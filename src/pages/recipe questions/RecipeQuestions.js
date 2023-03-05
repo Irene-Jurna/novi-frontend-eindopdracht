@@ -1,5 +1,5 @@
 import styles from "./RecipeQuestions.module.css";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import "../../App.css";
 import Button from "../../components/Button";
 import axios from "axios";
@@ -23,7 +23,7 @@ function RecipeQuestions() {
     const [error, toggleError] = useState(false);
     const history = useHistory();
 
-    //useCallBack voert functie uit. UseMemo slaat dingen op
+    //useCallBack voert de functie uit. UseMemo slaat de waardes op
     const handleClick = useCallback(
         (key) =>
             ({ target: { value } }) => {
@@ -37,8 +37,6 @@ function RecipeQuestions() {
         [setSelectedOption]
     );
 
-    //Object.values checken in mdn web docs
-    //Uit map komt altijd een array, uit reduce kan vanalles komen
     const objectToString = useMemo(
         () =>
             Object.entries(selectedOption).reduce(
@@ -77,9 +75,6 @@ function RecipeQuestions() {
         }
         toggleLoading(false);
     }
-
-    // Je kan ook alleen de geselecteerde optie in je State opslaan. Of een object met alle opties met een Boolean ‘isSelected’ per optie
-    // React form hooks librray & Formik
 
     return (
         <>

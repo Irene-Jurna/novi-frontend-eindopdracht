@@ -44,6 +44,8 @@
     font-family: 'Encode Sans Condensed', sans-serif;
 }
 
+/* ------------------------------- Media Queries -------------------------------- */
+
 @media screen and (min-width: 576px) {
     .form__input {
         margin-left: 10px;

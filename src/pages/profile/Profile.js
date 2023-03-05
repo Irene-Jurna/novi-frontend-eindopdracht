@@ -23,7 +23,6 @@ function Profile() {
                         },
                     }
                 );
-                console.log(result);
                 setProfileData(result.data);
             } catch (e) {
                 console.error(e);
