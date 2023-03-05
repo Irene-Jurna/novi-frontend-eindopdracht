@@ -1,4 +1,4 @@
-import "./RecipeInformation.css";
+import styles from "./RecipeInformation.module.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -11,12 +11,7 @@ function RecipeInformation() {
     const [recipeInformations, setRecipeInformations] = useState("");
     const controller = new AbortController();
 
-    console.log(id);
     useEffect(() => {
-        // Nieuw
-        const loop = setInterval(() => {
-            console.log("loading...");
-        }, 1000);
         async function fetchRecipeData() {
             try {
                 const result = await axios.get(
@@ -25,25 +20,27 @@ function RecipeInformation() {
                         signal: controller.signal,
                     }
                 );
-                console.log(result.data.recipe);
                 setRecipeInformations(result.data.recipe);
             } catch (e) {
                 console.error(e);
             }
         }
+
         fetchRecipeData();
-        // nieuw
         return function cleanup() {
-            console.log("Het interval wordt gestopt!");
-            clearInterval(loop);
+            controller.abort();
         };
-    }, [controller.signal, id]);
+    }, [id]);
 
     return (
         <main>
-            <header className="row-container-top yellow-background">
-                <section className="info-border">
-                    <h1 className="recipe-title">{recipeInformations.label}</h1>
+            <header
+                className={`${styles.header} ${styles["header--color-yellow"]}`}
+            >
+                <section className={styles["header--border"]}>
+                    <h1 className={styles.header__title}>
+                        {recipeInformations.label}
+                    </h1>
                     <RecipeInfoCard
                         recipeDishType={recipeInformations.dishType}
                         recipeCuisineType={recipeInformations.cuisineType}
@@ -53,12 +50,10 @@ function RecipeInformation() {
                     <p>Ingredients:</p>
                     {recipeInformations &&
                         recipeInformations.ingredientLines.map(
-                            (recipeInformation) => {
+                            (recipeInformation, index) => {
                                 return (
-                                    <ul>
-                                        <li key={recipeInformation}>
-                                            {recipeInformation}
-                                        </li>
+                                    <ul key={index}>
+                                        <li>{recipeInformation}</li>
                                     </ul>
                                 );
                             }
@@ -73,17 +68,20 @@ function RecipeInformation() {
                 </section>
             </header>
 
-            <h2 className="recipe-section-title">This recipe is: </h2>
+            <h2 className={styles["health-info__title"]}>This recipe is: </h2>
 
-            <article className="row-container health-container">
+            <article className={styles["health-info"]}>
                 {recipeInformations &&
-                    recipeInformations.healthLabels.map((healthInformation) => {
-                        return (
-                            <HealthInfoCard
-                                healthInformation={healthInformation}
-                            />
-                        );
-                    })}
+                    recipeInformations.healthLabels.map(
+                        (healthInformation, index) => {
+                            return (
+                                <HealthInfoCard
+                                    key={index}
+                                    healthInformation={healthInformation}
+                                />
+                            );
+                        }
+                    )}
             </article>
         </main>
     );

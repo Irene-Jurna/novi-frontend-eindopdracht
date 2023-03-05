@@ -1,10 +1,13 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import styles from "./RecipeQuestions.module.css";
+import React, { useCallback, useMemo, useState } from "react";
 import "../../App.css";
 import Button from "../../components/Button";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import RecipeCardOnlyText from "../../components/RecipeCardOnlyText";
 import Footer from "../../components/Footer";
+import Loader from "../../components/Loader";
+import Error from "../../components/Error";
 
 function RecipeQuestions() {
     const [selectedOption, setSelectedOption] = useState({
@@ -16,14 +19,15 @@ function RecipeQuestions() {
 
     const [recipes, setRecipes] = useState([]);
     const [id, setId] = useState("");
+    const [loading, toggleLoading] = useState(false);
+    const [error, toggleError] = useState(false);
     const history = useHistory();
 
-    //useCallBack voert functie uit. UseMemo slaat dingen op
+    //useCallBack voert de functie uit. UseMemo slaat de waardes op
     const handleClick = useCallback(
         (key) =>
             ({ target: { value } }) => {
                 setSelectedOption((prevState) => {
-                    console.log(key, value);
                     return {
                         ...prevState,
                         [key]: value,
@@ -33,8 +37,6 @@ function RecipeQuestions() {
         [setSelectedOption]
     );
 
-    //Object.values checken in mdn web docs
-    //Uit map komt altijd een array, uit reduce kan vanalles komen
     const objectToString = useMemo(
         () =>
             Object.entries(selectedOption).reduce(
@@ -49,41 +51,45 @@ function RecipeQuestions() {
     );
 
     async function getRecipes() {
-        console.log(objectToString);
+        toggleLoading(true);
+        toggleError(false);
         try {
             const response = await axios.get(
                 `https://api.edamam.com/api/recipes/v2?type=public&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan&${objectToString}`
             );
-            console.log(response.data.hits);
             setRecipes(response.data.hits);
-            const findId = response.data.hits[0].recipe.uri.lastIndexOf("_");
-            const findCompleteId = response.data.hits[0].recipe.uri.slice(
-                findId + 1
-            );
-            setId(findCompleteId);
-            console.log(response.data.hits[0].recipe.uri);
+
+            const recipeIds = [];
+            for (let i = 0; i < 20; i++) {
+                const findId =
+                    response.data.hits[i].recipe.uri.lastIndexOf("_");
+                const findCompleteId = response.data.hits[i].recipe.uri.slice(
+                    findId + 1
+                );
+                recipeIds.push(findCompleteId);
+            }
+            setId(recipeIds);
         } catch (e) {
             console.error(e);
+            toggleError(true);
         }
+        toggleLoading(false);
     }
-
-    // Je kan ook alleen de geselecteerde optie in je State opslaan. Of een object met alle opties met een Boolean ‘isSelected’ per optie
-    // React form hooks librray & Formik
 
     return (
         <>
             <main>
                 <header
                     className={
-                        id
-                            ? "row-container-top green-background"
-                            : "full-screen green-background"
+                        id || loading || error
+                            ? `${styles.header} ${styles["background--color-green"]}`
+                            : `${styles["full-screen"]} ${styles["background--color-green"]}`
                     }
                 >
                     <h2>Find all the ingredients for your perfect recipe</h2>
 
-                    <form className="form-question-list">
-                        <span className="form-text">
+                    <form className={styles.form}>
+                        <span className={styles.form__text}>
                             The recipe I'd like to make is for{" "}
                         </span>
                         <select
@@ -97,12 +103,9 @@ function RecipeQuestions() {
                             <option value="Lunch">lunch</option>
                             <option value="Dinner">dinner</option>
                             <option value="Teatime">tea or snack time</option>
-                            <option value="Cocktailparty">
-                                a cocktail party!
-                            </option>
                         </select>
 
-                        <span className="form-text">
+                        <span className={styles.form__text}>
                             {" "}
                             . My cooking session preferably takes{" "}
                         </span>
@@ -124,7 +127,7 @@ function RecipeQuestions() {
                             </option>
                         </select>
 
-                        <span className="form-text">
+                        <span className={styles.form__text}>
                             {" "}
                             . And I'd love to cook
                         </span>
@@ -135,16 +138,23 @@ function RecipeQuestions() {
                             onChange={handleClick("cuisineType")}
                         >
                             <option value=""></option>
-                            <option value="">any type of</option>
+                            <option value="American&Asian&British&Caribbean&Central%20Europe&Chinese&French&Indian&Japanese&Kosher&Mediterranean&Mexican&Middle%20Eastern&Nordic&South%20American&South%20East%20Asian">
+                                any type of
+                            </option>
                             <option value="American">American</option>
                             <option value="Asian">Asian</option>
-                            <option value="SouthAmerican">
+                            <option value="South%20American">
                                 South American
                             </option>
-                            <option value="European">European</option>
+                            <option value="Central%20Europe&Eastern%20Europe&French&Nordic">
+                                European
+                            </option>
                         </select>
 
-                        <span className="form-text"> cuisine. Diets? </span>
+                        <span className={styles.form__text}>
+                            {" "}
+                            cuisine. Diets?{" "}
+                        </span>
                         <select
                             className="form-dropdown-menu"
                             id="questionDiets"
@@ -152,15 +162,18 @@ function RecipeQuestions() {
                             onChange={handleClick("health")}
                         >
                             <option value=""></option>
-                            <option value="">
+                            <option value="alcohol-free&celery-free&crustacean-free&dairy-free&DASH&egg-free&fish-free&fodmap-free&gluten-free&immuno-supportive&keto-friendly&kidney-friendly&kosher&low-fat-abs&low-potassium&low-sugar&lupine-free&Mediterranean&mollusk-free&mustard-free&no-oil-added&paleo&peanut-free&pescatarian&pork-free&red-meat-free&sesame-free&shellfish-free&soy-free&sugar-conscious&sulfite-free&health=tree-nut-free&health=vegan&health=vegetarian&health=wheat-free">
                                 No diets, show me everything!
                             </option>
-                            <option value="wheat-free">wheat-free</option>
-                            <option value="tree-and-nut">nut-free</option>
+                            <option value="wheat-free&gluten-free">
+                                Wheat and gluten-free
+                            </option>
+                            <option value="tree-nut-free">Nut-free</option>
                             <option value="fodmap-free">FODMAP</option>
+                            <option value="keto-friendly">Keto friendly</option>
                         </select>
 
-                        <div className="form-center">
+                        <div className={styles.form__align}>
                             <Button
                                 type="button"
                                 onClick={getRecipes}
@@ -170,17 +183,34 @@ function RecipeQuestions() {
                     </form>
                 </header>
 
-                <article className="recipe-container">
-                    {recipes.map((recipe) => {
+                <article className={styles["recipe-container"]}>
+                    {recipes.map((recipe, index) => {
                         return (
                             <RecipeCardOnlyText
-                                recipeId={() => history.push(`/recipe/${id}`)}
+                                key={index}
+                                recipeId={() =>
+                                    history.push(`/recipe/${id[index]}`)
+                                }
                                 recipeTitle={recipe.recipe.label}
                                 recipeDishType={recipe.recipe.dishType}
                                 totalTime={recipe.recipe.totalTime}
                             />
                         );
                     })}
+                    {loading && (
+                        <Loader
+                            emoji="🥕"
+                            funnyText="Almost reached the boiling point!"
+                        />
+                    )}
+                    {error && (
+                        <Error>
+                            <p>
+                                Sorry, there are no recipes in our cookbook that
+                                match your search request.
+                            </p>
+                        </Error>
+                    )}
                 </article>
             </main>
             <Footer />

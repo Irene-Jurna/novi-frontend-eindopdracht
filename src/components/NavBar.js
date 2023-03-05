@@ -28,14 +28,14 @@ function NavBar() {
                             <img
                                 src={logo}
                                 alt="VanVeg logo"
-                                className="logo-img"
+                                className={styles["navbar__logo-size"]}
                             />
                         </Link>
                     </li>
                 </ul>
             </figure>
             <ul className={styles.navbar__link}>
-                <li className={styles["styles.navbar__link-padding"]}>
+                <li>
                     <Link to="/" className="navbar-tag">
                         {" "}
                         Home{" "}

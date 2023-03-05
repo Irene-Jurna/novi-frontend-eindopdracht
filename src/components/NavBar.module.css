@@ -3,13 +3,13 @@
     width: 100%;
     position: fixed;
     padding: 20px 50px;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .navbar--onscroll {
     display: flex;
     width: 100%;
-    background-color: white;
+    background-color: var(--white);
     box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
     position: fixed;
     padding: 20px 100px;
@@ -21,16 +21,16 @@
     display: flex;
 }
 
-.navbar__link{
+.navbar__logo-size {
+    height: 50px;
+    width: auto;
+}
+
+.navbar__link {
     list-style: none;
     font-family: 'Encode Sans Condensed', sans-serif;
     display: flex;
-    justify-content: space-around;
     padding: 10px;
-}
-
-.navbar__link-padding{
-    padding: 0 10px;
 }
 
 .navbar__button-container {
@@ -42,8 +42,8 @@
     border-radius: 4px;
     border: none;
     padding: 8px 16px;
-    background-color: #678D58;
-    color: white;
+    background-color: var(--green);
+    color: var(--white);
     font-weight: bold;
 }
 
@@ -55,9 +55,9 @@
     cursor: pointer;
 }
 
-/*.navbar-links > li {*/
-/*    padding: 0 10px;*/
-/*}*/
+.navbar__link > li {
+    padding: 0 10px;
+}
 
 nav a,
 nav a:visited {
@@ -66,14 +66,32 @@ nav a:visited {
 }
 
 nav a:hover {
-    color: #A6C48A;
+    color: var(--olivine);
 }
 
 .active-link {
     text-decoration: underline;
-    color: black;
 }
 
 .default-link {
     text-decoration: none;
+}
+
+/* ------------------------------- Media Queries -------------------------------- */
+
+@media screen and (min-width: 576px) {
+    .navbar {
+        padding: 20px 100px;
+        flex: 1 1 auto;
+    }
+
+    .navbar__link {
+        display: flex;
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 0;
+        justify-content: flex-end;
+        box-sizing: border-box;
+        align-items: center;
+    }
 }

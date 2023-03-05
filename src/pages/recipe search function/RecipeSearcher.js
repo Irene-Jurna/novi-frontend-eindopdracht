@@ -1,35 +1,46 @@
-import "./RecipeSearcher.css";
+import styles from "./RecipeSearcher.module.css";
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import RecipeCardOnlyText from "../../components/RecipeCardOnlyText";
 import Footer from "../../components/Footer";
+import Loader from "../../components/Loader";
+import Error from "../../components/Error";
 
 function RecipeSearcher() {
     const [searchValue, setSearchValue] = useState("");
     const [recipes, setRecipes] = useState([]);
     const [query, setQuery] = useState("");
-    const [id, setId] = useState("");
+    const [id, setId] = useState([]);
+    const [loading, toggleLoading] = useState(false);
+    const [error, toggleError] = useState(false);
     const history = useHistory();
 
     useEffect(() => {
         async function fetchRecipes() {
+            toggleLoading(true);
+            toggleError(false);
             try {
                 const response = await axios.get(
                     `https://api.edamam.com/api/recipes/v2?type=public&q=${searchValue}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_MY_API_KEY}&health=vegan`
                 );
-                console.log(response.data.hits);
                 setRecipes(response.data.hits);
-                const findId =
-                    response.data.hits[0].recipe.uri.lastIndexOf("_");
-                const findCompleteId = response.data.hits[0].recipe.uri.slice(
-                    findId + 1
-                );
-                setId(findCompleteId);
-                console.log(response.data.hits[0].recipe.uri);
+
+                const recipeIds = [];
+                for (let i = 0; i < 20; i++) {
+                    const findId =
+                        response.data.hits[i].recipe.uri.lastIndexOf("_");
+                    const findCompleteId = response.data.hits[
+                        i
+                    ].recipe.uri.slice(findId + 1);
+                    recipeIds.push(findCompleteId);
+                }
+                setId(recipeIds);
             } catch (e) {
                 console.error(e);
+                toggleError(true);
             }
+            toggleLoading(false);
         }
 
         if (searchValue) {
@@ -39,7 +50,6 @@ function RecipeSearcher() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log({ searchValue });
         setQuery(searchValue);
     }
 
@@ -49,21 +59,20 @@ function RecipeSearcher() {
                 <header
                     className={
                         query
-                            ? "row-container-top champagne-background"
-                            : "full-screen champagne-background"
+                            ? `${styles.header} ${styles["background--color-champagne"]}`
+                            : `${styles["full-screen"]} ${styles["background--color-champagne"]}`
                     }
                 >
-                    <section>
+                    <section className={styles["search__align"]}>
                         <h2>Find your recipe</h2>
                         <p>Search your favorites</p>
                     </section>
 
-                    <form
-                        className="search-container"
-                        type="submit"
-                        onSubmit={handleSubmit}
-                    >
-                        <label htmlFor="form-input" className="search-item">
+                    <form onSubmit={handleSubmit}>
+                        <label
+                            htmlFor="form-input"
+                            className={styles["search__align"]}
+                        >
                             Yum... You're almost there:
                             <input
                                 type="text"
@@ -71,24 +80,46 @@ function RecipeSearcher() {
                                 name="input-search"
                                 value={searchValue}
                                 placeholder="Type here"
-                                className="search-bar"
+                                className={styles["search__bar"]}
                                 onChange={(e) => setSearchValue(e.target.value)}
                             />
                         </label>
                     </form>
                 </header>
 
-                <article className="recipe-container">
-                    {recipes.map((recipe) => {
+                <article className={styles["recipe-container"]}>
+                    {recipes.map((recipe, index) => {
                         return (
                             <RecipeCardOnlyText
-                                recipeId={() => history.push(`/recipe/${id}`)}
+                                key={index}
+                                recipeId={() =>
+                                    history.push(`/recipe/${id[index]}`)
+                                }
                                 recipeTitle={recipe.recipe.label}
                                 recipeDishType={recipe.recipe.dishType}
                                 totalTime={recipe.recipe.totalTime}
                             />
                         );
                     })}
+                    {loading && <Loader emoji="🍆" funnyText="Chop chop" />}
+                    {error && (
+                        <Error>
+                            <p>
+                                Your search was received well, but we cannot
+                                find recipes for you. Please check if you made a
+                                typo. If you spelled your search correctly,
+                                there is a technical issue on our end. In that
+                                case, please wait a few seconds to 1 minute and
+                                try to refresh this page. If the issue keeps
+                                happening, you could try to search for recipes
+                                via{" "}
+                                <Link to="/recipe-questions">
+                                    our recipe question list
+                                </Link>
+                                .
+                            </p>
+                        </Error>
+                    )}
                 </article>
             </main>
             <Footer />

@@ -1,3 +1,4 @@
+import styles from "./Register.module.css";
 import React, { useState } from "react";
 import "../../App.css";
 import { Link, useHistory } from "react-router-dom";
@@ -35,19 +36,21 @@ function Register() {
 
     return (
         <>
-            <main className="full-screen pink-background">
-                <header className="item-centered">
+            <main
+                className={`${styles["full-screen"]} ${styles["full-screen--color-pink"]}`}
+            >
+                <header>
                     <h1>Je wil je registreren, hoera!</h1>
                 </header>
 
                 <form
                     onSubmit={handleSubmit}
-                    className="register-form form-text"
+                    className={`${styles.form} ${styles.form__text}`}
                 >
                     <label htmlFor="email-field">
                         Email:
                         <input
-                            className="form-input"
+                            className={styles.form__input}
                             type="email"
                             id="email-field"
                             name="email"
@@ -59,7 +62,7 @@ function Register() {
                     <label htmlFor="username-field">
                         Username:
                         <input
-                            className="form-input"
+                            className={styles.form__input}
                             type="text"
                             id="username-field"
                             value={username}
@@ -70,7 +73,7 @@ function Register() {
                     <label htmlFor="password-field">
                         Password:
                         <input
-                            className="form-input"
+                            className={styles.form__input}
                             type="password"
                             id="password-field"
                             name="password"
@@ -88,7 +91,7 @@ function Register() {
                         )}
                     </article>
 
-                    <button type="submit" className="form-button">
+                    <button type="submit" className={styles.form__button}>
                         Register
                     </button>
 
